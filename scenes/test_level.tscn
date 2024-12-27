@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjpc32x5s5lgm"]
+[gd_scene load_steps=10 format=3 uid="uid://cjpc32x5s5lgm"]
 
 [ext_resource type="Texture2D" uid="uid://bgw40wa8ws08b" path="res://assets/sprites/test_sprites.png" id="1_2k3gm"]
-[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_q2ptt"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_knv4b"]
 [ext_resource type="PackedScene" uid="uid://sqsgqjo32stp" path="res://scenes/player.tscn" id="2_kqp2c"]
 [ext_resource type="PackedScene" uid="uid://cug8544s6b4lp" path="res://scenes/chest.tscn" id="4_k3mqq"]
@@ -157,7 +156,6 @@ sources/0 = SubResource("TileSetAtlasSource_7j2xs")
 
 [node name="Test level" type="Node2D"]
 position = Vector2(-9, 3)
-script = ExtResource("1_q2ptt")
 metadata/_edit_group_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_kqp2c")]
