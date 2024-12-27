@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtxd5gm7ix42t"]
+
+[ext_resource type="Texture2D" uid="uid://dhsrntiepu2os" path="res://assets/sprites/test-door.png" id="1_bvvqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds3p2"]
+size = Vector2(32, 30)
+
+[node name="Door" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.45, 0.45, 0.45, 1)
+position = Vector2(0, -19)
+scale = Vector2(1.5625, 1.5625)
+texture = ExtResource("1_bvvqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_ds3p2")
