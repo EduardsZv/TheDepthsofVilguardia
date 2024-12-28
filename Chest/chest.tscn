@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cug8544s6b4lp"]
 
 [ext_resource type="Texture2D" uid="uid://bli0mri34mled" path="res://assets/sprites/chest_mimic.png" id="1_jsbus"]
-[ext_resource type="Script" path="res://scripts/chest.gd" id="1_ttsdb"]
+[ext_resource type="Script" path="res://Chest/chest.gd" id="1_ttsdb"]
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_mxdjq"]
 [ext_resource type="AudioStream" uid="uid://c6kfkckm3vvfm" path="res://assets/sounds/treasure-open.wav" id="3_nw04i"]
 
@@ -230,7 +230,5 @@ offset_left = 11.0
 offset_top = -13.0
 offset_right = 43.0
 offset_bottom = 10.0
-text = "x99
-"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=7 format=3 uid="uid://dgm3mj0mqqjqw"]
+
+[ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_data.gd" id="1_5fblk"]
+[ext_resource type="Script" path="res://GUI/inventory/scripts/slot_data.gd" id="2_7y5bk"]
+[ext_resource type="Resource" uid="uid://cwxklcgs11jxe" path="res://resources/items/gem.tres" id="3_4wpwl"]
+[ext_resource type="Resource" uid="uid://djoeea0w3crxt" path="res://resources/items/potion.tres" id="4_ubedt"]
+
+[sub_resource type="Resource" id="Resource_nshr8"]
+script = ExtResource("2_7y5bk")
+item_data = ExtResource("3_4wpwl")
+quantity = 64
+
+[sub_resource type="Resource" id="Resource_hc0gb"]
+script = ExtResource("2_7y5bk")
+item_data = ExtResource("4_ubedt")
+quantity = 10
+
+[resource]
+script = ExtResource("1_5fblk")
+slots = Array[ExtResource("2_7y5bk")]([SubResource("Resource_nshr8"), SubResource("Resource_hc0gb"), null, null, null])

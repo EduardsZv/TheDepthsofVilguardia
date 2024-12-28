@@ -1,0 +1,144 @@
+[gd_scene load_steps=8 format=3 uid="uid://ib367qt6o5s7"]
+
+[ext_resource type="Script" path="res://GUI/inventory/scripts/inventory.gd" id="1_2fv3a"]
+[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_hsxto"]
+[ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="3_8gax4"]
+[ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_vt8n4"]
+[ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://Player/player_inv.tres" id="4_flrt3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wfb7"]
+atlas = ExtResource("2_hsxto")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ciaqd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_3wfb7")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Inventory" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_2fv3a")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.998
+offset_right = 1.0
+offset_bottom = 0.295959
+
+[node name="OuterBackground" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.537255)
+
+[node name="Frame" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19
+anchor_top = 0.18
+anchor_right = 0.81
+anchor_bottom = 0.82
+offset_left = -0.189987
+offset_top = 0.18
+offset_right = -0.190002
+offset_bottom = 0.179993
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Box" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_left = -0.199997
+offset_top = 0.199997
+offset_right = -0.200073
+offset_bottom = 0.200012
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447047, 0.218706, 0.134241, 1)
+
+[node name="Label" type="Label" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.275
+anchor_right = 0.5
+anchor_bottom = 0.275
+offset_left = -81.5
+offset_top = -25.925
+offset_right = 82.5
+offset_bottom = 26.075
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Inventory"
+
+[node name="ItemDesc" type="Label" parent="Control"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.275
+anchor_right = 0.5
+anchor_bottom = 0.275
+offset_left = -113.5
+offset_top = 201.075
+offset_right = 81.5
+offset_bottom = 228.075
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "A valuable gem."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.44
+anchor_right = 0.57
+anchor_bottom = 0.577
+offset_left = -0.200012
+offset_top = 0.319977
+offset_right = -0.210083
+offset_bottom = -0.319
+theme_override_styles/panel = SubResource("StyleBoxTexture_ciaqd")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_vt8n4")
+data = ExtResource("4_flrt3")
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+layout_mode = 2

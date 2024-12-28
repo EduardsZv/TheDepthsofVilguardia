@@ -3,20 +3,21 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
+var health: int = 30
+var max_health: int = 90
 
 
 var on_ladder: bool = false
 var climbing := false
 
-var openable_chest: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_manager: Node = $"../PlayerManager"
 
-
+func _ready() -> void:
+	PlayerHud.init_hp(max_health, health)
 
 func _physics_process(delta: float) -> void:
-	print(openable_chest)
 	
 	# Get the input direction and handle the movement/deceleration.
 	var x_direction := Input.get_axis("left", "right")
@@ -30,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if Input.is_action_pressed("interact"):
-		player_manager.interact_pressed.emit()
+		PlayerManager.interact_pressed.emit()
 		
 	
 	

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://brhk7seb6pys0"]
+
+[ext_resource type="Script" path="res://GUI/player_hud/player_hud.gd" id="1_fd6r6"]
+[ext_resource type="PackedScene" uid="uid://crye4kicy6hn2" path="res://GUI/player_hud/health_bar.tscn" id="2_w1thf"]
+
+[node name="PlayerHud" type="CanvasLayer"]
+script = ExtResource("1_fd6r6")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_w1thf")]
+anchor_left = 0.958
+anchor_top = 0.015
+anchor_right = 0.977
+anchor_bottom = 0.519
+offset_left = 0.383911
+offset_top = 0.28
+offset_right = -0.504028
+offset_bottom = -0.312042

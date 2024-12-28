@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://csk35fyh814q4"]
+
+[ext_resource type="Script" path="res://resources/item_data.gd" id="1_cb500"]
+[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_jue80"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbp0s"]
+atlas = ExtResource("2_jue80")
+region = Rect2(64, 0, 32, 0)
+
+[resource]
+script = ExtResource("1_cb500")
+name = "Stone"
+description = "Used for crafting."
+texture = SubResource("AtlasTexture_xbp0s")
