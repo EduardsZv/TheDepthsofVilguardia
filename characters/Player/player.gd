@@ -3,22 +3,26 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-var health: int = 30
+var health: int = 80
 var max_health: int = 90
 
 
 var on_ladder: bool = false
 var climbing := false
+var is_dead := false 
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var player_manager: Node = $"../PlayerManager"
 
 func _ready() -> void:
 	PlayerHud.init_hp(max_health, health)
 
 func _physics_process(delta: float) -> void:
-	
+	PlayerHud.update_hp(health)
+	if is_dead == false and health <= 0:
+		on_death()
+	if is_dead:
+		return
 	# Get the input direction and handle the movement/deceleration.
 	var x_direction := Input.get_axis("left", "right")
 	var y_direction := Input.get_axis("up", "down")
@@ -30,17 +34,20 @@ func _physics_process(delta: float) -> void:
 	ladder_function(y_direction)
 	
 	
+	
 	if Input.is_action_pressed("interact"):
 		PlayerManager.interact_pressed.emit()
 		
-	
+	if Input.is_action_just_pressed("test"):
+		damage_player(5)
 	
 
 	move_and_slide()
 
 
 func basic_movement(delta, x_direction) -> void:
-	
+	if is_dead:
+		return
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -94,3 +101,11 @@ func _on_ladder_checker_body_entered(body: Node2D) -> void:
 
 func _on_ladder_checker_body_exited(body: Node2D) -> void:
 	on_ladder = false
+
+func damage_player(value: int) -> void:
+	health -= 5
+
+func on_death() -> void:
+	print(1)
+	is_dead = true
+	animated_sprite.play("death")

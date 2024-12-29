@@ -62,4 +62,23 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.4
+wait_time = 0.598
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.115
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 6.88501
+theme_override_font_sizes/font_size = 18
+text = "60
+---
+90"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

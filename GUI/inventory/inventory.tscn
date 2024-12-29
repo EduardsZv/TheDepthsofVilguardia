@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_hsxto"]
 [ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="3_8gax4"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_vt8n4"]
-[ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://Player/player_inv.tres" id="4_flrt3"]
+[ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_flrt3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wfb7"]
 atlas = ExtResource("2_hsxto")
