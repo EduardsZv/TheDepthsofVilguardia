@@ -12,7 +12,7 @@ extends ProgressBar
 var max_health: set = _set_max_health
 var health: set = _set_health
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	max_health_bar.value = max_health
 	health_bar.value = health
 	

@@ -5,14 +5,20 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 var health: int = 80
 var max_health: int = 90
+var invincibility_length: int = 60
 
+var inv_frame_counter: int = 0
 
 var on_ladder: bool = false
 var climbing := false
 var is_dead := false 
-
+var inv_frames_active: = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 
 func _ready() -> void:
 	PlayerHud.init_hp(max_health, health)
@@ -33,6 +39,13 @@ func _physics_process(delta: float) -> void:
 	
 	ladder_function(y_direction)
 	
+	if inv_frames_active:
+		inv_frame_counter += 1
+	
+	if inv_frame_counter >= 60:
+		inv_frames_active = false
+		inv_frame_counter = 0
+		animation_player.play("RESET")
 	
 	
 	if Input.is_action_pressed("interact"):
@@ -96,16 +109,22 @@ func ladder_function(y_direction) -> void:
 		else:
 			velocity.y = 0
 
-func _on_ladder_checker_body_entered(body: Node2D) -> void:
+func _on_ladder_checker_body_entered(_body: Node2D) -> void:
 	on_ladder = true
 
-func _on_ladder_checker_body_exited(body: Node2D) -> void:
+func _on_ladder_checker_body_exited(_body: Node2D) -> void:
 	on_ladder = false
 
 func damage_player(value: int) -> void:
-	health -= 5
+	if !inv_frames_active:
+		animation_player.play("invincible")
+		animated_sprite.play("hit")
+		health -= value
+		inv_frames_active = true
+
 
 func on_death() -> void:
-	print(1)
 	is_dead = true
 	animated_sprite.play("death")
+	collision_shape.queue_free()
+	animation_player.play("RESET")

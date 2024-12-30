@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://sqsgqjo32stp"]
+[gd_scene load_steps=43 format=3 uid="uid://sqsgqjo32stp"]
 
 [ext_resource type="Script" path="res://characters/Player/player.gd" id="1_qlscw"]
 [ext_resource type="Texture2D" uid="uid://djtigma4ik4yh" path="res://assets/sprites/test_character.png" id="1_xaqpm"]
@@ -23,6 +23,18 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6jvl"]
 atlas = ExtResource("2_b1byy")
 region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hui51"]
+atlas = ExtResource("2_b1byy")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k4r"]
+atlas = ExtResource("2_b1byy")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxx64"]
+atlas = ExtResource("2_b1byy")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rc6ib"]
 atlas = ExtResource("1_xaqpm")
@@ -144,6 +156,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hui51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxx64")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rc6ib")
 }, {
 "duration": 1.0,
@@ -230,6 +256,44 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_2a8ek"]
+resource_name = "invincible"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_d2plu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tq5qn"]
+_data = {
+"RESET": SubResource("Animation_d2plu"),
+"invincible": SubResource("Animation_2a8ek")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i143d"]
 size = Vector2(15, 30.5313)
 
@@ -240,20 +304,23 @@ size = Vector2(6, 32.75)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
+collision_mask = 16
 script = ExtResource("1_qlscw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_putgm")
-animation = &"death"
+animation = &"hit"
 autoplay = "idle"
-frame = 4
+frame = 2
 frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tq5qn")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, -15.7344)
 shape = SubResource("RectangleShape2D_i143d")
 
@@ -266,16 +333,25 @@ collision_mask = 8
 position = Vector2(0, -17.375)
 shape = SubResource("RectangleShape2D_iusi3")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="InteractablesChecker" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractablesChecker"]
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_kiy36")
 debug_color = Color(0, 0.649946, 0.120336, 0.42)
+
+[node name="AttackChecker" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackChecker"]
+position = Vector2(0.5, -15.734)
+shape = SubResource("RectangleShape2D_i143d")
+debug_color = Color(0.7, 0, 0, 0.419608)
 
 [connection signal="body_entered" from="LadderChecker" to="." method="_on_ladder_checker_body_entered"]
 [connection signal="body_exited" from="LadderChecker" to="." method="_on_ladder_checker_body_exited"]
