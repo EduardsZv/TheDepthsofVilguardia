@@ -22,6 +22,11 @@ Inventory="*res://GUI/inventory/inventory.tscn"
 PlayerManager="*res://Globals/player_manager.tscn"
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
 
+[display]
+
+window/size/viewport_width=1366
+window/size/viewport_height=768
+
 [input]
 
 up={

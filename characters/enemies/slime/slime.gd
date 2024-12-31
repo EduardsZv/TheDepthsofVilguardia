@@ -25,7 +25,6 @@ var attacking := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	kill_zone.attacking.connect(on_attack)
-	connect("animation_finished", on_attack)
 	kill_zone.damage = damage
 	
 
