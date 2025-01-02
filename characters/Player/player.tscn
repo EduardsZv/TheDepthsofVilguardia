@@ -1,8 +1,86 @@
-[gd_scene load_steps=43 format=3 uid="uid://sqsgqjo32stp"]
+[gd_scene load_steps=54 format=3 uid="uid://sqsgqjo32stp"]
 
 [ext_resource type="Script" path="res://characters/Player/player.gd" id="1_qlscw"]
 [ext_resource type="Texture2D" uid="uid://djtigma4ik4yh" path="res://assets/sprites/test_character.png" id="1_xaqpm"]
 [ext_resource type="Texture2D" uid="uid://bvcu8gnpryolp" path="res://assets/sprites/player_hit_death.png" id="2_b1byy"]
+[ext_resource type="Texture2D" uid="uid://dhspr6h2g55xb" path="res://assets/sprites/player.png" id="2_b3u7o"]
+[ext_resource type="Script" path="res://characters/Player/attack_collision.gd" id="5_rxa50"]
+
+[sub_resource type="Animation" id="Animation_16ke1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array()]
+}
+
+[sub_resource type="Animation" id="Animation_05p0e"]
+resource_name = "attack_right"
+length = 1.00002
+step = 0.166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(-38.9079, -7.46, -22.6666, -6.45428, 8.01148, -6.45428, 29.6666, -8.46571, 40.4941, -11.4829, 40.4941, -14.5, 35.0803, -16.5114, 29.6666, -17.5171, -1.01147, -17.5171), PackedVector2Array(-17.2528, -7.46, -11.839, -6.45428, 0.793117, -6.45428, 9.81607, -7.46, 22.4482, -8.46571, 29.6666, -9.47143, 36.8849, -10.4771, 40.4941, -11.4829, 42.2987, -12.4886, 42.2987, -14.5, 36.8849, -16.5114, 27.862, -17.5171, 11.6207, -17.5171, -17.2528, -8.46571), PackedVector2Array(-17.2528, -7.46, 26.0574, -6.45428, 47.7125, -7.46, 54.9308, -10.4771, 60.3446, -13.4943, 62.1492, -16.5114, 58.54, -18.5229, 51.3216, -18.5229, 40.4941, -19.5286, 22.4482, -17.5171, 8.01148, -15.5057, -11.839, -11.4829, -17.2528, -8.46571), PackedVector2Array()]
+}
+
+[sub_resource type="Animation" id="Animation_0oje8"]
+resource_name = "attack_left"
+length = 1.00002
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionPolygon2D:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(), PackedVector2Array(27.908, -7.46, 11.667, -6.454, -19.011, -6.454, -40.667, -8.466, -51.494, -11.483, -51.494, -14.5, -46.08, -16.511, -40.667, -17.517, -9.989, -17.517), PackedVector2Array(6.253, -7.46, 0.839, -6.454, -11.793, -6.454, -20.816, -7.46, -33.448, -8.466, -40.667, -9.471, -47.885, -10.477, -51.494, -11.483, -53.299, -12.489, -53.299, -14.5, -47.885, -16.511, -38.862, -17.517, -22.621, -17.517, 6.253, -8.466), PackedVector2Array(6.253, -7.46, -37.057, -6.454, -58.713, -7.46, -65.931, -10.477, -71.345, -13.494, -73.149, -16.511, -69.54, -18.523, -62.322, -18.523, -51.494, -19.529, -33.448, -17.517, -19.011, -15.506, 0.839, -11.483, 6.253, -8.466), PackedVector2Array()]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tm82"]
+_data = {
+"RESET": SubResource("Animation_16ke1"),
+"attack_left": SubResource("Animation_0oje8"),
+"attack_right": SubResource("Animation_05p0e")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m47sd"]
+atlas = ExtResource("2_b3u7o")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8csl"]
+atlas = ExtResource("2_b3u7o")
+region = Rect2(512, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1pb3"]
+atlas = ExtResource("2_b3u7o")
+region = Rect2(576, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejwyl"]
+atlas = ExtResource("2_b3u7o")
+region = Rect2(640, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eos1p"]
+atlas = ExtResource("2_b3u7o")
+region = Rect2(704, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5suo"]
 atlas = ExtResource("2_b1byy")
@@ -134,6 +212,26 @@ region = Rect2(1024, 0, 41, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_putgm"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m47sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8csl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1pb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejwyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eos1p")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l5suo")
@@ -270,11 +368,21 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2a8ek"]
 resource_name = "invincible"
-length = 0.25
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -282,10 +390,22 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333),
+"times": PackedFloat32Array(0, 0.133333, 0.233333, 0.366666, 0.5, 0.633333, 0.733333, 0.866666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tq5qn"]
@@ -307,20 +427,29 @@ z_index = 5
 collision_mask = 16
 script = ExtResource("1_qlscw")
 
+[node name="AttackPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AttackCollision")
+libraries = {
+"": SubResource("AnimationLibrary_7tm82")
+}
+speed_scale = 2.5
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_putgm")
-animation = &"hit"
+animation = &"attack"
 autoplay = "idle"
-frame = 2
+frame = 4
 frame_progress = 1.0
+flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="InvincibilityFrames" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_tq5qn")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.5, -15.7344)
 shape = SubResource("RectangleShape2D_i143d")
 
@@ -344,14 +473,32 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_kiy36")
 debug_color = Color(0, 0.649946, 0.120336, 0.42)
 
-[node name="AttackChecker" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackChecker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0.5, -15.734)
 shape = SubResource("RectangleShape2D_i143d")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
+[node name="AttackCollision" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("5_rxa50")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackCollision"]
+position = Vector2(3.5605, -2.58239)
+scale = Vector2(0.554142, 0.994318)
+
+[node name="AttackLength" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="animation_started" from="AttackPlayer" to="AttackCollision" method="_on_attack_player_animation_started"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_animation_finished"]
+[connection signal="animation_finished" from="InvincibilityFrames" to="." method="_on_invincibility_frames_animation_finished"]
 [connection signal="body_entered" from="LadderChecker" to="." method="_on_ladder_checker_body_entered"]
 [connection signal="body_exited" from="LadderChecker" to="." method="_on_ladder_checker_body_exited"]
+[connection signal="body_entered" from="AttackCollision" to="." method="_on_attack_collision_body_entered"]
+[connection signal="timeout" from="AttackLength" to="." method="_on_attack_length_timeout"]

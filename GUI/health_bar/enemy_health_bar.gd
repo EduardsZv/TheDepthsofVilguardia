@@ -5,24 +5,21 @@ extends ProgressBar
 @onready var damage_bar: ProgressBar = $DamageBar
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var timer: Timer = $Timer
-@onready var health_label: Label = $HealthLabel
 
-
+var health_coefficient: float
 
 var max_health: set = _set_max_health
 var health: set = _set_health
 
 func _process(_delta: float) -> void:
 	max_health_bar.value = max_health
-	health_bar.value = health
-	
-	update_label()
-	
+	health_bar.value = health * health_coefficient
 
 func init_healthbar(new_max_health, new_health) -> void:
 	_set_max_health(new_max_health)
 	_set_health(new_health)
-	damage_bar.value = new_health
+	damage_bar.value = 100
+	health_coefficient = 100 / new_max_health
 	
 
 func _set_max_health(new_max_health) -> void:
@@ -35,8 +32,6 @@ func _set_health(new_health) -> void:
 	if new_health > 0 && new_health <= max_health:
 		health = new_health
 
-func update_label() -> void:
-	health_label.text= str(health) + "\n---\n" + str(max_health)
 
 func update_health(new_health: int) -> void:
 	if health == new_health:
@@ -46,18 +41,16 @@ func update_health(new_health: int) -> void:
 		return
 	if new_health >= prev_health: # If health became bigger, instantly update damage_bar
 		health = new_health
-		damage_bar.value = new_health
+		damage_bar.value = new_health * health_coefficient
 	if new_health < prev_health:
+		if new_health <= 0:
+			health = 0
 		health = new_health
 		timer.start()
 	pass
 
-func update_max_health(new_max_health: int) -> void:
-	max_health = new_max_health
-	if new_max_health <= health:
-		health = new_max_health
 
 func _on_timer_timeout() -> void:
 	if health <= 0:
 		damage_bar.value = 0
-	damage_bar.value = health
+	damage_bar.value = health  * health_coefficient

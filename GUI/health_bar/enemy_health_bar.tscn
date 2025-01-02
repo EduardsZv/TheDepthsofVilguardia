@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://crye4kicy6hn2"]
+[gd_scene load_steps=8 format=3 uid="uid://bke3avfmpg1ig"]
 
-[ext_resource type="Script" path="res://GUI/player_hud/health_bar.gd" id="1_cwn8h"]
+[ext_resource type="Script" path="res://GUI/health_bar/enemy_health_bar.gd" id="1_u0pk1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6liwc"]
 bg_color = Color(0, 0, 0, 0.407843)
@@ -9,8 +9,8 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5u6uq"]
-bg_color = Color(0.73, 0, 0, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdh6n"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00k2p"]
 
@@ -23,17 +23,17 @@ bg_color = Color(1, 1, 1, 0.701961)
 bg_color = Color(0.627451, 0.980392, 0, 0.819608)
 
 [node name="MaxHealthBar" type="ProgressBar"]
+z_index = 500
 anchors_preset = -1
 anchor_right = 0.061
 anchor_bottom = 0.619
-offset_right = -0.272003
-offset_bottom = -0.112
+offset_right = 915.674
+offset_bottom = -423.392
 theme_override_styles/background = SubResource("StyleBoxFlat_6liwc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_5u6uq")
-value = 80.0
-fill_mode = 3
+theme_override_styles/fill = SubResource("StyleBoxFlat_hdh6n")
+max_value = 5.0
 show_percentage = false
-script = ExtResource("1_cwn8h")
+script = ExtResource("1_u0pk1")
 
 [node name="DamageBar" type="ProgressBar" parent="."]
 layout_mode = 1
@@ -44,8 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_00k2p")
 theme_override_styles/fill = SubResource("StyleBoxFlat_k2beo")
-value = 60.0
-fill_mode = 3
+value = 70.0
 show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -57,28 +56,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_sv8a4")
 theme_override_styles/fill = SubResource("StyleBoxFlat_os7gg")
-value = 50.0
-fill_mode = 3
+value = 60.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.598
-
-[node name="HealthLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.115
-offset_left = 1.0
-offset_top = 2.0
-offset_right = 1.0
-offset_bottom = 6.88501
-theme_override_font_sizes/font_size = 18
-text = "60
----
-90"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

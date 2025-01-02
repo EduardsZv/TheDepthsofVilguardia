@@ -1,8 +1,45 @@
-[gd_scene load_steps=29 format=3 uid="uid://b521cihh0wfjk"]
+[gd_scene load_steps=33 format=3 uid="uid://b521cihh0wfjk"]
 
 [ext_resource type="Texture2D" uid="uid://cp21wqv0umh7n" path="res://characters/enemies/slime/slime-Sheet.png" id="1_n0g8s"]
 [ext_resource type="Script" path="res://characters/enemies/slime/slime.gd" id="1_wj2jc"]
 [ext_resource type="Script" path="res://characters/enemies/slime/kill_zone.gd" id="3_3jjvx"]
+[ext_resource type="PackedScene" uid="uid://bke3avfmpg1ig" path="res://GUI/health_bar/enemy_health_bar.tscn" id="4_m5ep8"]
+
+[sub_resource type="Animation" id="Animation_jipk7"]
+resource_name = "invincibility"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_vfynd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HurtBox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_es7wk"]
+_data = {
+"RESET": SubResource("Animation_vfynd"),
+"invincibility": SubResource("Animation_jipk7")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hxik5"]
 atlas = ExtResource("1_n0g8s")
@@ -24,22 +61,6 @@ region = Rect2(96, 25, 32, 25)
 atlas = ExtResource("1_n0g8s")
 region = Rect2(128, 25, 32, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m85hy"]
-atlas = ExtResource("1_n0g8s")
-region = Rect2(128, 25, 32, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a2ral"]
-atlas = ExtResource("1_n0g8s")
-region = Rect2(160, 25, 32, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2pmys"]
-atlas = ExtResource("1_n0g8s")
-region = Rect2(192, 25, 32, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ggn1s"]
-atlas = ExtResource("1_n0g8s")
-region = Rect2(224, 25, 32, 25)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_crwpg"]
 atlas = ExtResource("1_n0g8s")
 region = Rect2(0, 50, 32, 25)
@@ -59,6 +80,22 @@ region = Rect2(96, 50, 32, 25)
 [sub_resource type="AtlasTexture" id="AtlasTexture_nwgv6"]
 atlas = ExtResource("1_n0g8s")
 region = Rect2(128, 50, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m85hy"]
+atlas = ExtResource("1_n0g8s")
+region = Rect2(128, 25, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2ral"]
+atlas = ExtResource("1_n0g8s")
+region = Rect2(160, 25, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pmys"]
+atlas = ExtResource("1_n0g8s")
+region = Rect2(192, 25, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggn1s"]
+atlas = ExtResource("1_n0g8s")
+region = Rect2(224, 25, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3t2if"]
 atlas = ExtResource("1_n0g8s")
@@ -120,23 +157,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m85hy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a2ral")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2pmys")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ggn1s")
-}],
-"loop": false,
-"name": &"damaged",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_crwpg")
 }, {
 "duration": 1.0,
@@ -153,6 +173,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m85hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2ral")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pmys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggn1s")
+}],
+"loop": false,
+"name": &"hit",
 "speed": 5.0
 }, {
 "frames": [{
@@ -194,15 +231,21 @@ size = Vector2(21, 12)
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_wj2jc")
 
+[node name="InvincibilityFrames" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_es7wk")
+}
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11.5)
 sprite_frames = SubResource("SpriteFrames_d4smh")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
-frame_progress = 0.250662
 flip_h = true
 
 [node name="KillZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("3_3jjvx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
@@ -211,20 +254,6 @@ shape = SubResource("RectangleShape2D_ueakr")
 debug_color = Color(0.7, 0, 0, 0.419608)
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="AttackRaycasts" type="Node" parent="."]
-
-[node name="RayAttackLeft" type="RayCast2D" parent="AttackRaycasts"]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(0, -6)
-target_position = Vector2(-10.5, 0)
-collision_mask = 4
-
-[node name="RayAttackRight" type="RayCast2D" parent="AttackRaycasts"]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(0, -6)
-target_position = Vector2(10.5, 0)
-collision_mask = 4
 
 [node name="RayLeft" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -246,6 +275,28 @@ position = Vector2(0, -6)
 target_position = Vector2(11, 7)
 collision_mask = 16
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_ueakr")
+debug_color = Color(0.7, 0, 0, 0.419608)
+
+[node name="HealthBar" parent="." instance=ExtResource("4_m5ep8")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -22.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="animation_finished" from="InvincibilityFrames" to="." method="_on_invincibility_frames_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_animation_finished"]
-[connection signal="body_entered" from="KillZone" to="KillZone" method="_on_body_entered"]
-[connection signal="body_exited" from="KillZone" to="KillZone" method="_on_body_exited"]
+[connection signal="area_entered" from="KillZone" to="KillZone" method="_on_area_entered"]
+[connection signal="area_exited" from="KillZone" to="KillZone" method="_on_area_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
