@@ -4,6 +4,7 @@ signal shown
 signal hidden
 
 @onready var item_desc: Label = $Control/ItemDesc
+@onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 var inv_open: bool = false
@@ -25,14 +26,19 @@ func _process(_delta: float) -> void:
 func close_inventory() -> void:
 	visible = false
 	inv_open = false
-	get_tree().paused = false
+	PlayerManager.toggle_movement()
 	hidden.emit()
 
 func open_inventory() -> void:
 	visible = true
 	inv_open = true
-	get_tree().paused = true
+	PlayerManager.toggle_movement()
 	shown.emit()
 
 func update_item_description(new_text: String) -> void:
 	item_desc.text = new_text
+
+
+func play_sound(sound: AudioStream) -> void:
+	audio_stream_player.stream = sound
+	audio_stream_player.play()

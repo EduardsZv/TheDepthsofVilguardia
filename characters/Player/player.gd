@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 signal sig_attacking
 
@@ -16,6 +16,7 @@ var is_dead := false
 var attacking := false
 var facing_right: = true
 var stunned := false
+var restrict_movement := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	var x_direction := Input.get_axis("left", "right")
 	var y_direction := Input.get_axis("up", "down")
 	
-	if !stunned:
+	if !stunned && restrict_movement:
 		basic_movement(delta, x_direction)
 		movement_animation(x_direction)
 		ladder_function(y_direction)
@@ -128,7 +129,7 @@ func damage_player(value: int) -> void:
 			stunned = true
 			animated_sprite.play("hit")
 			invincibility_frames.play("invincible")
-			health -= value
+			update_health(-value)
 
 
 func on_death() -> void:
@@ -165,3 +166,21 @@ func _on_invincibility_frames_animation_finished(anim_name: StringName) -> void:
 	#print(anim_name)
 	if anim_name == "invincible":
 		invincibility_frames.play("RESET")
+
+func update_health(hp : int) -> void:
+	var new_health = health + hp
+	if new_health >= max_health:
+		health = max_health
+	elif new_health <= 0:
+		health = 0
+	else:
+		health = new_health
+
+func toggle_movement() -> void:
+	restrict_movement = !restrict_movement
+
+func get_health() -> int:
+	return health
+
+func get_max_health() -> int:
+	return max_health

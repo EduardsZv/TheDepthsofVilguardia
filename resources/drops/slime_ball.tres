@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dauk51du2snol"]
+
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_p6s6b"]
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_vk8sl"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="2_4ryys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_703pv"]
+atlas = ExtResource("2_4ryys")
+region = Rect2(32, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_p6s6b")
+name = "Slime Ball"
+description = "Squishy and gooey."
+texture = SubResource("AtlasTexture_703pv")
+effects = Array[ExtResource("1_vk8sl")]([])

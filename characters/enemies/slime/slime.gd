@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed: int = 50
+var speed: int
 var direction: int = 1
 var damage: int = 10
 
@@ -11,6 +11,10 @@ var inv_frame_counter: int = 0
 
 var stunned := false
 var inv_frames_active: = false
+
+const PICKUP = preload("res://items/item_pickup/item_pickup.tscn")
+
+@export var drops: Array[DropData]
 
 @onready var ray_left: RayCast2D = $RayLeft
 @onready var ray_right: RayCast2D = $RayRight
@@ -33,6 +37,7 @@ var inv_frames_active: = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	speed = 40 + randi() % 61     # Random speed 40-60 
 	health_bar.init_healthbar(health, health)
 	kill_zone.attacking.connect(on_attack)
 	kill_zone.damage = damage
@@ -43,7 +48,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !stunned:
 		idle_roaming(delta)
-
 
 func idle_roaming(delta: float) -> void:
 	
@@ -56,7 +60,11 @@ func idle_roaming(delta: float) -> void:
 		animated_sprite.flip_h = true
 	
 	if !stunned:
-		position.x += direction * speed * delta
+		if direction == 1:
+			position.x += speed * delta
+		elif direction == -1:
+			position.x -= speed * delta
+		
 
 
 func on_attack() -> void:
@@ -72,7 +80,12 @@ func _on_animated_sprite_animation_finished() -> void:
 		if kill_zone.inside_killzone:
 			kill_zone._on_area_entered(null)
 	if animated_sprite.get_animation() == "die":
-		queue_free()
+		animated_sprite.visible = false
+		health_bar.queue_free()
+	if animated_sprite.get_animation() == "hit":	
+		animated_sprite.play("idle")
+		stunned = false
+		invincibility_frames.play("RESET")
 
 func on_damage(damage: int) -> void:
 	update_hp( health-damage )
@@ -85,6 +98,7 @@ func on_damage(damage: int) -> void:
 	invincibility_frames.play("invincibility")
 
 func on_death():
+	drop_items()
 	stunned = true
 	kill_zone.queue_free()
 	hurt_box.queue_free()
@@ -96,8 +110,6 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 func _on_invincibility_frames_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "invincibility":
 		invincibility_frames.play("RESET")
-		animated_sprite.play("idle")
-		stunned = false
 
 func update_hp(new_health: int):
 	if new_health <= 0: 
@@ -107,3 +119,21 @@ func update_hp(new_health: int):
 	else:
 		return
 	health_bar.update_health(new_health)
+
+
+func drop_items() -> void:
+	if drops.size() == 0:
+		print(0)
+		return
+	
+	for i in drops.size():
+		if drops[i] == null || drops[i].item == null:
+			print(1)
+			continue
+		var drop_count = drops[i].get_drop_count()
+		for j in drop_count:
+			var drop: ItemPickup = PICKUP.instantiate() as ItemPickup
+			drop.item_data = drops[i].item
+			call_deferred("add_child", drop)
+			drop.position.x = hurt_box.position.x + randf() * 50
+			drop.position.y = hurt_box.position.y - 10
