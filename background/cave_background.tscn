@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://fnpvp4qxo8e0"]
 
-[ext_resource type="Texture2D" uid="uid://cp88fd234vyve" path="res://background/assets/Gradient (z -6).png" id="1_5sobl"]
-[ext_resource type="Texture2D" uid="uid://7ik7nfj78327" path="res://background/assets/sky (z -3).png" id="2_p4tay"]
-[ext_resource type="Texture2D" uid="uid://da3u8dfepwkal" path="res://background/assets/bg_2 (z -2).png" id="3_8414k"]
-[ext_resource type="Texture2D" uid="uid://s0vliupdp6fu" path="res://background/assets/bg_1 (z -1).png" id="4_v1gvg"]
-[ext_resource type="Texture2D" uid="uid://bg5twmn6ep52s" path="res://background/assets/middleground (z 0).png" id="5_55dnq"]
-[ext_resource type="Texture2D" uid="uid://bdp4ex0pce4ga" path="res://background/assets/middleplus (z 1).png" id="6_s8cwa"]
-[ext_resource type="Texture2D" uid="uid://0b3vvunygjc2" path="res://background/assets/foreground (z 2).png" id="7_fj8he"]
+[ext_resource type="Texture2D" uid="uid://cp88fd234vyve" path="res://background/assets/cave_background/Gradient (z -6).png" id="1_5sobl"]
+[ext_resource type="Texture2D" uid="uid://7ik7nfj78327" path="res://background/assets/cave_background/sky (z -3).png" id="2_p4tay"]
+[ext_resource type="Texture2D" uid="uid://da3u8dfepwkal" path="res://background/assets/cave_background/bg_2 (z -2).png" id="3_8414k"]
+[ext_resource type="Texture2D" uid="uid://s0vliupdp6fu" path="res://background/assets/cave_background/bg_1 (z -1).png" id="4_v1gvg"]
+[ext_resource type="Texture2D" uid="uid://bg5twmn6ep52s" path="res://background/assets/cave_background/middleground (z 0).png" id="5_55dnq"]
+[ext_resource type="Texture2D" uid="uid://bdp4ex0pce4ga" path="res://background/assets/cave_background/middleplus (z 1).png" id="6_s8cwa"]
+[ext_resource type="Texture2D" uid="uid://0b3vvunygjc2" path="res://background/assets/cave_background/foreground (z 2).png" id="7_fj8he"]
 
 [node name="CaveBackground" type="ParallaxBackground"]
 

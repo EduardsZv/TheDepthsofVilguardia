@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdp4ex0pce4ga"
-path="res://.godot/imported/middleplus (z 1).png-b870dc11aaa1fb1a9534f12c8edd2c9a.ctex"
+uid="uid://7ik7nfj78327"
+path="res://.godot/imported/sky (z -3).png-8d4fef7124a6621d35dbe83279200cf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/assets/middleplus (z 1).png"
-dest_files=["res://.godot/imported/middleplus (z 1).png-b870dc11aaa1fb1a9534f12c8edd2c9a.ctex"]
+source_file="res://background/assets/cave_background/sky (z -3).png"
+dest_files=["res://.godot/imported/sky (z -3).png-8d4fef7124a6621d35dbe83279200cf3.ctex"]
 
 [params]
 

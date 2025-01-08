@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvq1sj7jdy43l"]
+
+[ext_resource type="FontFile" uid="uid://dvrlxgiyv1iey" path="res://assets/fonts/title_font.png" id="1_e8153"]
+[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="2_pdgmh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi2pf"]
+bg_color = Color(0.655076, 0.37778, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwbps"]
+bg_color = Color(0.858824, 0.501961, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l245g"]
+bg_color = Color(0.654902, 0.376471, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yfb7t"]
+bg_color = Color(0.858028, 0.501181, 1.92523e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
+
+[node name="TitleScreen" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1366, 768)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.254059, 0.113114, 0.0595657, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.087
+anchor_right = 0.949
+anchor_bottom = 0.893
+offset_left = 0.431999
+offset_top = -0.816002
+offset_right = -0.334106
+offset_bottom = -2.82404
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.219608, 0.133333, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.236
+anchor_top = 0.441
+anchor_right = 0.768
+anchor_bottom = 0.848
+offset_left = -0.376007
+offset_top = 0.311981
+offset_right = -0.0880127
+offset_bottom = -0.264038
+color = Color(0.714892, 0.380265, 0.254405, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.384
+offset_left = 429.0
+offset_top = 124.0
+offset_right = -387.0
+offset_bottom = 0.0880127
+theme_override_colors/font_shadow_color = Color(0.2484, 0.2484, 0.2484, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("1_e8153")
+theme_override_font_sizes/font_size = 55
+text = "THE DEPTHS 
+    OF 
+VILGUARDIA"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.314
+anchor_top = 0.5
+anchor_right = 0.684
+anchor_bottom = 0.794
+offset_left = 0.0759888
+offset_top = -5.0
+offset_right = 3.65601
+offset_bottom = 0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdgmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gi2pf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bwbps")
+text = "START GAME"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pdgmh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_l245g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yfb7t")
+text = "EXIT
+"

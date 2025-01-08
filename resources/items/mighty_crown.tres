@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dx42jm8bilp37"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_7s2wq"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_nu6re"]
+[ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="3_owl5i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n130v"]
+atlas = ExtResource("3_owl5i")
+region = Rect2(144, 32, 16, 16)
+
+[resource]
+script = ExtResource("2_nu6re")
+name = "A mighty crown"
+description = "The rulers of these caves have left this here.."
+texture = SubResource("AtlasTexture_n130v")
+effects = Array[ExtResource("1_7s2wq")]([])

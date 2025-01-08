@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7ik7nfj78327"
-path="res://.godot/imported/sky (z -3).png-985b5e42af7687e4edd3fa8869677c18.ctex"
+uid="uid://cqo8wunpfetpi"
+path="res://.godot/imported/inv_slot.png-83235764f54cd704db26e35e7e687eac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/assets/sky (z -3).png"
-dest_files=["res://.godot/imported/sky (z -3).png-985b5e42af7687e4edd3fa8869677c18.ctex"]
+source_file="res://assets/sprites/inv_slot.png"
+dest_files=["res://.godot/imported/inv_slot.png-83235764f54cd704db26e35e7e687eac.ctex"]
 
 [params]
 

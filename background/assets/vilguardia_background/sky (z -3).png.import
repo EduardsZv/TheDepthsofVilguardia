@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0b3vvunygjc2"
-path="res://.godot/imported/foreground (z 2).png-e1950725b218c343077b0c3c900b817e.ctex"
+uid="uid://cdkfdlr0eveb1"
+path="res://.godot/imported/sky (z -3).png-01423ff578ee0cc81a8e77486d48019c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/assets/foreground (z 2).png"
-dest_files=["res://.godot/imported/foreground (z 2).png-e1950725b218c343077b0c3c900b817e.ctex"]
+source_file="res://background/assets/vilguardia_background/sky (z -3).png"
+dest_files=["res://.godot/imported/sky (z -3).png-01423ff578ee0cc81a8e77486d48019c.ctex"]
 
 [params]
 

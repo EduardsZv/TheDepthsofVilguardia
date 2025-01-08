@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://cmf13sa5r5g51"
+path="res://.godot/imported/medium_yellow.png-96f0fc9d0a55cc9bb74841c00389b375.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/medium_yellow.png"
+dest_files=["res://.godot/imported/medium_yellow.png-96f0fc9d0a55cc9bb74841c00389b375.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("\' \'-\'Z\'", "\'[\'-\'l\'")
+kerning_pairs=PackedStringArray()
+columns=77
+rows=1
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

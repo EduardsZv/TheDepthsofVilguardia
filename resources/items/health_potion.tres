@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_cj3rr"]
 [ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_qr43t"]
 [ext_resource type="Script" path="res://items/item_effects/item_effect_heal.gd" id="2_4emav"]
-[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_4q48i"]
 [ext_resource type="AudioStream" uid="uid://d0fwcgr3nyg8j" path="res://assets/sounds/life_pickup.wav" id="3_lr6yb"]
+[ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="5_m5s6h"]
 
 [sub_resource type="Resource" id="Resource_d56ph"]
 script = ExtResource("2_4emav")
@@ -13,12 +13,13 @@ sound = ExtResource("3_lr6yb")
 filler = null
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ml38h"]
-atlas = ExtResource("2_4q48i")
-region = Rect2(32, 0, 32, 0)
+atlas = ExtResource("5_m5s6h")
+region = Rect2(176, 64, 16, 16)
 
 [resource]
 script = ExtResource("1_qr43t")
 name = "Potion"
-description = "Restores your HP."
+description = "Restores 10 HP.
+Press ENTER to use."
 texture = SubResource("AtlasTexture_ml38h")
 effects = Array[ExtResource("1_cj3rr")]([SubResource("Resource_d56ph")])

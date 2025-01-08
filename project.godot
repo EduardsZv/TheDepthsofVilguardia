@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Depths of Vilguardia"
-run/main_scene="res://Levels/main_level.tscn"
+run/main_scene="res://Levels/vilguardia.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,8 +19,10 @@ config/icon="res://icon.svg"
 
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
 PlayerManager="*res://Globals/player_manager.tscn"
+SceneManager="*res://Globals/scene_manager.tscn"
 PauseMenu="*res://GUI/pause_menu/pause_menu.tscn"
 Inventory="*res://GUI/inventory/inventory.tscn"
+TransitionAnimation="*res://GUI/transition_animation/transition_animation.tscn"
 
 [display]
 

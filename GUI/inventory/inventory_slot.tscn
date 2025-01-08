@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0w81rx6r0m4y"]
 
-[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="1_d6w0g"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_slot_ui.gd" id="1_e7myh"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="2_02kp2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxijk"]
-atlas = ExtResource("1_d6w0g")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cka7"]
+atlas = ExtResource("2_02kp2")
+region = Rect2(32, 48, 16, 16)
 
 [node name="InventorySlot" type="Button"]
 custom_minimum_size = Vector2(64, 64)
@@ -18,7 +18,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-texture = SubResource("AtlasTexture_pxijk")
+texture = SubResource("AtlasTexture_0cka7")
 expand_mode = 5
 
 [node name="Label" type="Label" parent="."]

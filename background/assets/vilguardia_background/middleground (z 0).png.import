@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp88fd234vyve"
-path="res://.godot/imported/Gradient (z -6).png-f920bb00264f232a73b2be79eefc12d5.ctex"
+uid="uid://cto0et3b8a0xw"
+path="res://.godot/imported/middleground (z 0).png-d5725b9f28b397827f62e0dd6235df44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/assets/Gradient (z -6).png"
-dest_files=["res://.godot/imported/Gradient (z -6).png-f920bb00264f232a73b2be79eefc12d5.ctex"]
+source_file="res://background/assets/vilguardia_background/middleground (z 0).png"
+dest_files=["res://.godot/imported/middleground (z 0).png-d5725b9f28b397827f62e0dd6235df44.ctex"]
 
 [params]
 

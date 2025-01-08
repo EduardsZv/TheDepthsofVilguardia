@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://d1mmwbqa0ycqq"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_sadbx"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_xefnh"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="3_ntc5f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h78xb"]
+atlas = ExtResource("3_ntc5f")
+region = Rect2(0, 16, 16, 16)
+
+[resource]
+script = ExtResource("2_xefnh")
+name = "Cursed amullet"
+description = "It radiates evilness. Looks like it came from your mom!"
+texture = SubResource("AtlasTexture_h78xb")
+effects = Array[ExtResource("1_sadbx")]([])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1btbckn11cn5"]
+
+[ext_resource type="Script" path="res://Levels/scene_opener.gd" id="1_ifpee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6s8ba"]
+resource_local_to_scene = true
+size = Vector2(32, 32)
+
+[node name="SceneOpener" type="Area2D"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_ifpee")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6s8ba")
+debug_color = Color(0.758942, 0.453236, 3.85046e-07, 0.42)

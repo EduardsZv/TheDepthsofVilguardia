@@ -9,7 +9,7 @@ var damage: int = 0
 @onready var slime: Node2D = $".."
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if inside_killzone:
 		if saved_body.name == "Player":
 			saved_body.damage_player(damage)
@@ -30,5 +30,5 @@ func _on_area_entered(area: Area2D) -> void:
 		attacking.emit()
 
 
-func _on_area_exited(area: Area2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	inside_killzone = false

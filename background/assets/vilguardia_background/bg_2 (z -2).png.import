@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg5twmn6ep52s"
-path="res://.godot/imported/middleground (z 0).png-84cccafd58c062335fe88202856948f3.ctex"
+uid="uid://b7yn6vse5wdo7"
+path="res://.godot/imported/bg_2 (z -2).png-8e9235a1ae3ef14a9c8f371ec6722d69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://background/assets/middleground (z 0).png"
-dest_files=["res://.godot/imported/middleground (z 0).png-84cccafd58c062335fe88202856948f3.ctex"]
+source_file="res://background/assets/vilguardia_background/bg_2 (z -2).png"
+dest_files=["res://.godot/imported/bg_2 (z -2).png-8e9235a1ae3ef14a9c8f371ec6722d69.ctex"]
 
 [params]
 

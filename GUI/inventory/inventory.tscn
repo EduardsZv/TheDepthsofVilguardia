@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://ib367qt6o5s7"]
+[gd_scene load_steps=14 format=3 uid="uid://ib367qt6o5s7"]
 
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory.gd" id="1_2fv3a"]
-[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/items.png" id="2_hsxto"]
+[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_hsxto"]
+[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="2_xcomc"]
 [ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="3_8gax4"]
+[ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="3_q4pcn"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_vt8n4"]
 [ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_flrt3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wfb7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_rno6w"]
 atlas = ExtResource("2_hsxto")
 region = Rect2(96, 0, 32, 32)
 
@@ -15,12 +17,36 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_3wfb7")
+texture = SubResource("AtlasTexture_rno6w")
 texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
 texture_margin_bottom = 14.0
 region_rect = Rect2(0, 0, 32, 32)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hxakb"]
+bg_color = Color(0.655076, 0.37778, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imbi8"]
+bg_color = Color(0.592157, 0.694118, 0.176471, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(7.90548e-06, 0.461779, 0.0757143, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymo2g"]
+bg_color = Color(0.655076, 0.37778, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2eowy"]
+bg_color = Color(0.858824, 0.219608, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
+corner_detail = 1
 
 [node name="Inventory" type="CanvasLayer"]
 process_mode = 3
@@ -76,34 +102,78 @@ color = Color(0.447047, 0.218706, 0.134241, 1)
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.275
-anchor_right = 0.5
-anchor_bottom = 0.275
-offset_left = -81.5
-offset_top = -25.925
-offset_right = 82.5
-offset_bottom = 26.075
+anchor_left = 0.201
+anchor_top = 0.241
+anchor_right = 0.8
+anchor_bottom = 0.309
+offset_left = 327.233
+offset_top = 0.144836
+offset_right = -327.6
+offset_bottom = 0.00515747
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
 theme_override_font_sizes/font_size = 32
-text = "Inventory"
+text = "INVENTORY"
 
 [node name="ItemDesc" type="Label" parent="Control"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.34
-anchor_top = 0.557
+anchor_left = 0.341
+anchor_top = 0.567
 anchor_right = 0.642
-anchor_bottom = 0.684
-offset_left = 0.220001
-offset_top = -0.0853271
-offset_right = 0.0140381
-offset_bottom = -0.254211
+anchor_bottom = 0.694
+offset_left = -148.147
+offset_top = -17.7529
+offset_right = -146.986
+offset_bottom = -17.9217
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 26
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 11
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_q4pcn")
+theme_override_font_sizes/font_size = 18
+text = "A slimy ball."
 autowrap_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 255.0
+offset_right = 768.0
+offset_bottom = 405.0
+color = Color(0.458824, 0.458824, 0.458824, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 695.0
+offset_top = 254.0
+offset_right = 768.0
+offset_bottom = 405.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="DelResCount" type="Label" parent="Control/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
+theme_override_font_sizes/font_size = 28
+text = "-"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -112,10 +182,10 @@ anchor_left = 0.361
 anchor_top = 0.351
 anchor_right = 0.621
 anchor_bottom = 0.549
-offset_left = -0.48703
-offset_top = -0.132751
-offset_right = 0.0929565
-offset_bottom = 0.0487671
+offset_left = -178.487
+offset_top = -15.1328
+offset_right = -177.907
+offset_bottom = -14.9512
 theme_override_styles/panel = SubResource("StyleBoxTexture_ciaqd")
 
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
@@ -141,5 +211,29 @@ layout_mode = 2
 
 [node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 500.0
+offset_right = 626.0
+offset_bottom = 550.0
+theme_override_constants/separation = 17
+
+[node name="UseButton" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hxakb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_imbi8")
+text = "USE"
+
+[node name="DelButton" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xcomc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ymo2g")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2eowy")
+text = "DELETE"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

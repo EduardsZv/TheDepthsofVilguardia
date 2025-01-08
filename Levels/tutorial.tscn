@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://p23v7yyhcuk1"]
+
+[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="1_020ub"]
+[ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="2_1n0jm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0spu"]
+bg_color = Color(0.655076, 0.37778, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g88p6"]
+bg_color = Color(0.858824, 0.501961, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
+corner_detail = 1
+
+[node name="Tutorial" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1366, 768)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.254059, 0.113114, 0.0595657, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.087
+anchor_right = 0.949
+anchor_bottom = 0.893
+offset_left = 0.431999
+offset_top = -0.816002
+offset_right = -0.334106
+offset_bottom = -2.82404
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.219608, 0.133333, 1)
+
+[node name="Label" type="Label" parent="."]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.412
+anchor_top = 0.155
+anchor_right = 0.6
+anchor_bottom = 0.223
+offset_left = 0.207947
+offset_top = -0.0400009
+offset_right = -0.600037
+offset_bottom = -0.179703
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_020ub")
+theme_override_font_sizes/font_size = 32
+text = "TUTORIAL"
+
+[node name="Tips" type="Label" parent="."]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.091
+anchor_top = 0.264
+anchor_right = 0.866
+anchor_bottom = 0.76
+offset_left = 2.69399
+offset_top = -24.752
+offset_right = 3.04395
+offset_bottom = -24.6801
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 11
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("2_1n0jm")
+theme_override_font_sizes/font_size = 18
+text = "Use WASD or arrow keys to move around and SPACE to jump.
+
+Press Left CTRL to attack.
+
+To open the inventory, press \"E\".
+
+To interact with the environment, press \"Z\"."
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.406
+anchor_top = 0.741
+anchor_right = 0.605
+anchor_bottom = 0.806
+offset_left = -0.596008
+offset_top = -0.0880127
+offset_right = -0.430054
+offset_bottom = -0.00805664
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_020ub")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e0spu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_g88p6")
+text = "START GAME"

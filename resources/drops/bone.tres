@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://q4p0iknqykq4"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_wkmep"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_q40e1"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="3_ip6jv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lim1u"]
+atlas = ExtResource("3_ip6jv")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_q40e1")
+name = "Bone"
+description = "I wonder to who this belongs?"
+texture = SubResource("AtlasTexture_lim1u")
+effects = Array[ExtResource("1_wkmep")]([])

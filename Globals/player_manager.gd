@@ -8,7 +8,8 @@ signal interact_pressed
 var player: Player
 
 func _ready() -> void:
-	add_player_instance()
+	PlayerManager.add_player_instance()
+	pass
 
 func update_hp(hp: int) -> void:
 	player.update_health(hp)
@@ -25,3 +26,15 @@ func add_player_instance() -> void:
 
 func toggle_movement() -> void:
 	player.toggle_movement()
+
+func set_player_pos( _new_pos: Vector2) -> void:
+	player.global_position = _new_pos
+
+func set_as_parent( _p: Node2D) -> void:
+	if player.get_parent():
+		player.get_parent().remove_child(player)
+	_p.add_child(player)
+
+
+func unparent_player(_p: Node2D) -> void:
+	_p.remove_child(player)

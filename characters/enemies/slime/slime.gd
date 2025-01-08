@@ -87,7 +87,7 @@ func _on_animated_sprite_animation_finished() -> void:
 		stunned = false
 		invincibility_frames.play("RESET")
 
-func on_damage(damage: int) -> void:
+func on_damage(_damage: int) -> void:
 	update_hp( health-damage )
 	if health <= 0:
 		print(1)
