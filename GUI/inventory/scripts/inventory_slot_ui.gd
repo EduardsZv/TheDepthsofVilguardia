@@ -26,10 +26,12 @@ func _ready() -> void:
 	# On slot press activates item_pressed function
 	pressed.connect(item_pressed)
 	
-	
 	if !Inventory.use_pressed.is_connected(item_used):
 		Inventory.use_pressed.connect(item_used)
 		Inventory.delete_pressed.connect(item_deleted)
+	
+	if !Market.sell_pressed.is_connected(item_sold):
+		Market.sell_pressed.connect(item_sold)
 
 
 func _process(delta: float) -> void:
@@ -68,11 +70,18 @@ func item_pressed() -> void:
 	if slot_data:
 		if slot_data.item_data:
 			slot_selected = true
-			Inventory.selected_slot = slot_data.item_data # Sends the selected item info to Inventory
-			Inventory.focus_on_use_button() # Switches focus to USE button
+			if Inventory.inv_open:
+				Inventory.selected_slot = slot_data.item_data # Sends the selected item info to Inventory
+				Inventory.focus_on_use_button() # Switches focus to USE button
+			if Market.market_open:
+				Market.selected_slot = slot_data.item_data
+				Market.update_sellable_item_value(slot_data.item_data.sell_value * slot_data.quantity)
 
 # When item is used
 func item_used() -> void:
+	if !Inventory.inv_open:
+		return
+	
 	if slot_selected:
 		if slot_data:
 			if slot_data.item_data:
@@ -82,9 +91,31 @@ func item_used() -> void:
 				slot_data.quantity -= 1
 				label.text = str( slot_data.quantity)
 
+func item_sold() -> void:
+	if !Market.market_open:
+		return
+	
+	var sold_item_count: int = Market.selected_item_count
+	
+	
+
+	
+	if slot_selected:
+		if slot_data:
+			if slot_data.item_data:
+				
+				if slot_data.quantity - Market.selected_item_count > 0:
+					sold_item_count = slot_data.quantity - Market.selected_item_count
+				for i in range(0, sold_item_count+1):
+					slot_data.item_data.sell()
+					slot_data.quantity -= 1
+					label.text = str( slot_data.quantity)
 
 # When item is deleted
 func item_deleted() -> void:
+	if !Inventory.inv_open:
+		return
+		
 	# Takes item count from inventory
 	var deleted_item_count = Inventory.selected_item_count
 	

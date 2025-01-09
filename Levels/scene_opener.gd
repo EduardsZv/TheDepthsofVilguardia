@@ -10,6 +10,7 @@ class_name SceneOpener extends Area2D
 		size = value
 		_update_area()
 
+@export var door_name: String = ""
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -32,8 +33,7 @@ func _player_exited(_p: Node2D) -> void:
 		PlayerManager.interact_pressed.disconnect(change_scene)
 
 func change_scene() -> void:
-	SceneManager.load_new_scene(level)
-	print("Scene Changed")
+	SceneManager.load_new_scene(level, door_name)
 
 
 func _update_area() -> void:

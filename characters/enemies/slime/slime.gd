@@ -88,8 +88,9 @@ func _on_animated_sprite_animation_finished() -> void:
 		animated_sprite.play("idle") # Resumes idle state
 		
 		# If the player in the killzone after attack is finished, resumes another attack
-		if kill_zone.inside_killzone:
-			kill_zone._on_area_entered(null)
+		if get_node_or_null("KillZone"):
+			if kill_zone.inside_killzone:
+				kill_zone._on_area_entered(null)
 	
 	# On death, makes enemy invisible and removes health bar
 	if animated_sprite.get_animation() == "die":
@@ -106,7 +107,6 @@ func _on_animated_sprite_animation_finished() -> void:
 func on_damage(_damage: int) -> void:
 	update_hp( health-damage )
 	if health <= 0: # If enemy doesnt have health points, death
-		print(1)
 		on_death()
 		return
 	# Plays animations and stuns the enemy, gives it invincibility
@@ -144,7 +144,6 @@ func update_hp(new_health: int):
 # Drops the items that has been set to the enemy
 func drop_items() -> void:
 	if drops.size() == 0: # If no items have been set
-		print(0)
 		return
 	
 	for i in drops.size():

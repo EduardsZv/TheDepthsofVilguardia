@@ -13,4 +13,6 @@ script = ExtResource("2_u336l")
 name = "Ruby"
 description = "This looks valuable!"
 texture = SubResource("AtlasTexture_ia2l0")
+point_value = 175
+sell_value = 75
 effects = Array[ExtResource("1_vp61f")]([])

@@ -13,4 +13,6 @@ script = ExtResource("2_nu6re")
 name = "A mighty crown"
 description = "The rulers of these caves have left this here.."
 texture = SubResource("AtlasTexture_n130v")
+point_value = 700
+sell_value = 400
 effects = Array[ExtResource("1_7s2wq")]([])

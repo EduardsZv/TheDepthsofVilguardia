@@ -24,6 +24,7 @@ SceneManager="*res://Globals/scene_manager.tscn"
 PauseMenu="*res://GUI/pause_menu/pause_menu.tscn"
 TransitionAnimation="*res://GUI/transition_animation/transition_animation.tscn"
 DeathScreen="*res://GUI/death_screen/death_screen.tscn"
+Market="*res://Levels/Market/market.tscn"
 
 [display]
 

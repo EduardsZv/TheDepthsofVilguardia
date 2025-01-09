@@ -40,16 +40,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.447047, 0.218706, 0.134241, 1)
 
-[node name="Label2" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = 8.0
-offset_right = 218.0
-offset_bottom = 33.0
+[node name="PointsLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.348
+anchor_top = 0.51
+anchor_right = 0.66
+anchor_bottom = 0.543
+offset_left = 0.631958
+offset_top = 0.319946
+offset_right = -0.560059
+offset_bottom = -0.0240479
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_45rwr")
@@ -57,15 +57,15 @@ theme_override_font_sizes/font_size = 25
 text = "YOUR POINTS: 1500"
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -184.0
-offset_top = -118.0
-offset_right = 194.0
-offset_bottom = -76.0
+anchors_preset = -1
+anchor_left = 0.365
+anchor_top = 0.346
+anchor_right = 0.642
+anchor_bottom = 0.401
+offset_left = 0.409973
+offset_top = 0.271973
+offset_right = 0.0279541
+offset_bottom = 0.0319824
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.891291, 4.18738e-06, 8.66354e-07, 1)
@@ -82,15 +82,15 @@ vframes = 4
 frame = 31
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -161.0
-offset_top = 52.0
-offset_right = 168.0
-offset_bottom = 122.0
+anchors_preset = -1
+anchor_left = 0.382
+anchor_top = 0.568
+anchor_right = 0.623
+anchor_bottom = 0.659
+offset_left = 0.187988
+offset_top = -0.223999
+offset_right = -0.0180054
+offset_bottom = -0.11203
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10

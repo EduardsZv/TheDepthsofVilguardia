@@ -12,6 +12,10 @@ var focus_index = 0
 func _ready() -> void:
 	Inventory.shown.connect(update_inventory) # On inventory open, updates inventory
 	Inventory.hidden.connect(clear_inventory) # On inventory close, clears it
+	
+	Market.shown.connect(update_inventory) # On market open, updates inventory
+	Market.hidden.connect(clear_inventory) # On market close, clears it
+	
 	clear_inventory()
 	data.changed.connect(on_inventory_changed) # When inventory data is changed, calls function
 	

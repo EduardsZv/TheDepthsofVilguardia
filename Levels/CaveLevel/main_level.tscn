@@ -745,6 +745,7 @@ position = Vector2(365, -272)
 [node name="SceneOpener2" parent="ExitDoor" instance=ExtResource("3_446kl")]
 position = Vector2(0, -15)
 level = "res://Levels/Vilguardia/vilguardia.tscn"
+door_name = "cave_entrance"
 
 [node name="EntranceDoor" parent="." instance=ExtResource("2_yhww6")]
 position = Vector2(-34, 16)

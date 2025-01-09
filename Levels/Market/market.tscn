@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://cls1swwtsym3b"]
+[gd_scene load_steps=15 format=3 uid="uid://cls1swwtsym3b"]
 
-[ext_resource type="Script" path="res://Levels/market.gd" id="1_2s88l"]
+[ext_resource type="Script" path="res://Levels/Market/market.gd" id="1_2s88l"]
 [ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="1_h73b4"]
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_3tol7"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_el2qe"]
@@ -8,16 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="5_uetw1"]
 [ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="6_jfowk"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wfb7"]
-atlas = ExtResource("2_3tol7")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ept5i"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_3wfb7")
+texture = ExtResource("2_3tol7")
 texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
@@ -63,124 +59,147 @@ corner_detail = 1
 [node name="Market" type="CanvasLayer"]
 script = ExtResource("1_2s88l")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.001
+anchor_bottom = 1.0
+offset_right = -0.366089
+offset_bottom = -1.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
 custom_minimum_size = Vector2(1366, 768)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.254059, 0.113114, 0.0595657, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.048
 anchor_top = 0.087
 anchor_right = 0.949
 anchor_bottom = 0.893
-offset_left = 0.431999
-offset_top = -0.816002
-offset_right = -0.334106
-offset_bottom = -2.82404
+offset_left = 0.384003
+offset_top = -0.729004
+offset_right = -0.38208
+offset_bottom = -2.73706
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.447059, 0.219608, 0.133333, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Title" type="Label" parent="Control"]
 process_mode = 3
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.19
 anchor_top = 0.034
 anchor_right = 0.815
 anchor_bottom = 0.102
-offset_left = 16.46
-offset_top = 59.888
-offset_right = -69.29
-offset_bottom = 59.7483
+offset_left = 16.27
+offset_top = 59.922
+offset_right = -69.48
+offset_bottom = 59.7823
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
 theme_override_font_sizes/font_size = 32
 text = "THE MARKET OF VILGUARDIA"
 
-[node name="MarketInv" type="PanelContainer" parent="."]
+[node name="MarketInv" type="PanelContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.371
 anchor_top = 0.302
 anchor_right = 0.632
 anchor_bottom = 0.417
-offset_left = -385.786
-offset_top = 3.064
-offset_right = -386.312
-offset_bottom = 2.74399
+offset_left = -386.157
+offset_top = 3.366
+offset_right = -386.683
+offset_bottom = 67.161
 theme_override_styles/panel = SubResource("StyleBoxTexture_ept5i")
 
-[node name="GridContainer" type="GridContainer" parent="MarketInv"]
+[node name="GridContainer" type="GridContainer" parent="Control/MarketInv"]
 layout_mode = 2
 columns = 5
-script = ExtResource("3_el2qe")
-data = ExtResource("4_k6gsm")
 
-[node name="InventorySlot2" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot2" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="InventorySlot" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="InventorySlot3" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot3" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="InventorySlot4" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot4" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="InventorySlot5" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot5" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="InventorySlot6" parent="MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot6" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
+script = null
 
-[node name="PlayerInv" type="PanelContainer" parent="."]
+[node name="PlayerInv" type="PanelContainer" parent="Control"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.371
 anchor_top = 0.302
 anchor_right = 0.632
 anchor_bottom = 0.417
-offset_left = 386.214
-offset_top = 2.064
-offset_right = 385.688
-offset_bottom = 65.744
+offset_left = 385.843
+offset_top = 2.366
+offset_right = 385.317
+offset_bottom = 66.161
 theme_override_styles/panel = SubResource("StyleBoxTexture_ept5i")
 
-[node name="GridContainer" type="GridContainer" parent="PlayerInv"]
+[node name="GridContainer" type="GridContainer" parent="Control/PlayerInv"]
 layout_mode = 2
 columns = 5
 script = ExtResource("3_el2qe")
 data = ExtResource("4_k6gsm")
 
-[node name="InventorySlot2" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot2" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="InventorySlot" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot3" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot4" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot5" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
+[node name="InventorySlot6" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
 layout_mode = 2
 
-[node name="BuyContainer" type="VBoxContainer" parent="."]
-offset_left = 123.0
-offset_top = 462.0
-offset_right = 345.0
-offset_bottom = 512.0
+[node name="BuyContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09
+anchor_top = 0.602
+anchor_right = 0.253
+anchor_bottom = 0.667
+offset_left = -0.0300064
+offset_top = 0.26593
+offset_right = -0.688019
+offset_bottom = 0.41095
 
-[node name="Button" type="Button" parent="BuyContainer"]
+[node name="Button" type="Button" parent="Control/BuyContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
@@ -188,13 +207,19 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8kpn6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qg43e")
 text = "BUY"
 
-[node name="SellContainer" type="VBoxContainer" parent="."]
-offset_left = 1060.0
-offset_top = 464.0
-offset_right = 1224.0
-offset_bottom = 514.0
+[node name="SellContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.776
+anchor_top = 0.604
+anchor_right = 0.896
+anchor_bottom = 0.669
+offset_left = -0.791992
+offset_top = 0.731995
+offset_right = -0.712036
+offset_bottom = 0.876953
 
-[node name="Button" type="Button" parent="SellContainer"]
+[node name="SellButton" type="Button" parent="Control/SellContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
@@ -202,17 +227,43 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o743x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_av4qk")
 text = "SELL"
 
-[node name="PurchasableItemsTitle" type="Label" parent="."]
+[node name="PurchasableItemsTitle2" type="Label" parent="Control"]
 process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.573
+anchor_top = 0.242
+anchor_right = 0.912
+anchor_bottom = 0.31
+offset_left = -0.291016
+offset_top = 0.385986
+offset_right = -0.365112
+offset_bottom = 0.162003
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 11
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("6_jfowk")
+theme_override_font_sizes/font_size = 18
+text = "Available items to sell"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="PurchasableItemsTitle" type="Label" parent="Control"]
+process_mode = 3
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.354
 anchor_top = 0.251
 anchor_right = 0.656
 anchor_bottom = 0.284
-offset_left = -368.564
-offset_top = -2.76801
-offset_right = -369.096
-offset_bottom = -3.112
+offset_left = -368.918
+offset_top = -2.517
+offset_right = -369.45
+offset_bottom = -2.86099
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -226,7 +277,7 @@ text = "Available items to buy"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PurchasableItemsTitle2" type="Label" parent="PurchasableItemsTitle"]
+[node name="PlayerMoneyLabel" type="Label" parent="Control"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
@@ -234,34 +285,10 @@ anchor_left = 0.354
 anchor_top = 0.251
 anchor_right = 0.656
 anchor_bottom = 0.284
-offset_left = 557.152
-offset_top = -6.275
-offset_right = 866.728
-offset_bottom = 68.9
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 11
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("6_jfowk")
-theme_override_font_sizes/font_size = 18
-text = "Available items to sell"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="PlayerMoneyLabel" type="Label" parent="."]
-process_mode = 3
-anchors_preset = -1
-anchor_left = 0.354
-anchor_top = 0.251
-anchor_right = 0.656
-anchor_bottom = 0.284
-offset_left = -29.564
-offset_top = 450.232
-offset_right = -27.096
-offset_bottom = 448.888
+offset_left = -29.918
+offset_top = 450.483
+offset_right = -27.45
+offset_bottom = 449.139
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -274,17 +301,18 @@ theme_override_font_sizes/font_size = 18
 text = "Available money: 2465c"
 autowrap_mode = 2
 
-[node name="ItemCostLabel2" type="Label" parent="."]
+[node name="SellableItemLabel" type="Label" parent="Control"]
 process_mode = 3
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.354
 anchor_top = 0.251
 anchor_right = 0.656
 anchor_bottom = 0.284
-offset_left = 443.436
-offset_top = 212.232
-offset_right = 334.904
-offset_bottom = 211.888
+offset_left = 443.082
+offset_top = 212.483
+offset_right = 334.55
+offset_bottom = 212.139
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -294,21 +322,21 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("6_jfowk")
 theme_override_font_sizes/font_size = 18
-text = "Value: 75c"
 horizontal_alignment = 2
 autowrap_mode = 2
 
-[node name="ItemCostLabel" type="Label" parent="."]
+[node name="BuyableItemLabel" type="Label" parent="Control"]
 process_mode = 3
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.354
 anchor_top = 0.251
 anchor_right = 0.656
 anchor_bottom = 0.284
-offset_left = -360.564
-offset_top = 211.232
-offset_right = -469.096
-offset_bottom = 210.888
+offset_left = -360.918
+offset_top = 211.483
+offset_right = -469.45
+offset_bottom = 211.139
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -321,27 +349,39 @@ theme_override_font_sizes/font_size = 18
 text = "Cost: 50c"
 autowrap_mode = 2
 
-[node name="ColorRect3" type="ColorRect" parent="."]
-offset_left = 789.0
-offset_top = 234.0
-offset_right = 862.0
-offset_bottom = 384.0
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.578
+anchor_top = 0.305
+anchor_right = 0.631
+anchor_bottom = 0.5
+offset_left = -1.12604
+offset_top = 0.0649872
+offset_right = -0.524048
+offset_bottom = 0.304993
 color = Color(0.458824, 0.458824, 0.458824, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 789.0
-offset_top = 233.0
-offset_right = 862.0
-offset_bottom = 384.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.578
+anchor_top = 0.303
+anchor_right = 0.631
+anchor_bottom = 0.5
+offset_left = -1.12604
+offset_top = 0.598999
+offset_right = -0.524048
+offset_bottom = 0.303009
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="PlusButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
 theme_override_font_sizes/font_size = 28
 text = "+"
 
-[node name="SellResCount" type="Label" parent="VBoxContainer"]
+[node name="SellResCount" type="Label" parent="Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
@@ -349,22 +389,33 @@ text = "14"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="MinusButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
 theme_override_font_sizes/font_size = 28
 text = "-"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="."]
-offset_left = 531.0
-offset_top = 481.0
-offset_right = 785.0
-offset_bottom = 565.0
+[node name="ExitContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.626
+anchor_right = 0.575
+anchor_bottom = 0.736
+offset_left = -0.763
+offset_top = 0.857971
+offset_right = -0.83905
+offset_bottom = 0.377991
 
-[node name="Button" type="Button" parent="VBoxContainer2"]
+[node name="ExitButton" type="Button" parent="Control/ExitContainer"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jmwq6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cd03x")
 text = "EXIT THE MARKET"
+
+[connection signal="pressed" from="Control/SellContainer/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="Control/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]

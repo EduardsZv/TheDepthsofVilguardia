@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://cug8544s6b4lp"]
 
 [ext_resource type="Script" path="res://Chest/chest.gd" id="1_ttsdb"]
-[ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_mxdjq"]
 [ext_resource type="Texture2D" uid="uid://bgw40wa8ws08b" path="res://assets/sprites/test_sprites.png" id="2_y60dt"]
 [ext_resource type="AudioStream" uid="uid://c6kfkckm3vvfm" path="res://assets/sounds/treasure-open.wav" id="3_nw04i"]
+[ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="4_e3wey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jeby5"]
 size = Vector2(16, 12)
@@ -189,9 +189,9 @@ _data = {
 "opened": SubResource("Animation_egcq4")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oijkc"]
-atlas = ExtResource("2_mxdjq")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbg2y"]
+atlas = ExtResource("4_e3wey")
+region = Rect2(0, 0, 16, 16)
 
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_ttsdb")
@@ -223,8 +223,8 @@ autoplay = "closed"
 
 [node name="Item" type="Sprite2D" parent="."]
 position = Vector2(0, -9)
-scale = Vector2(0.46875, 0.46875)
-texture = SubResource("AtlasTexture_oijkc")
+scale = Vector2(0.671875, 0.671875)
+texture = SubResource("AtlasTexture_nbg2y")
 
 [node name="Label" type="Label" parent="Item"]
 offset_left = 11.0

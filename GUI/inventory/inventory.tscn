@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ib367qt6o5s7"]
+[gd_scene load_steps=13 format=3 uid="uid://ib367qt6o5s7"]
 
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory.gd" id="1_2fv3a"]
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_hsxto"]
@@ -8,16 +8,12 @@
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_vt8n4"]
 [ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_flrt3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rno6w"]
-atlas = ExtResource("2_hsxto")
-region = Rect2(96, 0, 32, 32)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ciaqd"]
 content_margin_left = 10.0
 content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = SubResource("AtlasTexture_rno6w")
+texture = ExtResource("2_hsxto")
 texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0

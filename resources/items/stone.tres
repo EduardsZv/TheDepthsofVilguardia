@@ -13,4 +13,6 @@ script = ExtResource("1_cb500")
 name = "Stone"
 description = "Used for crafting."
 texture = SubResource("AtlasTexture_xbp0s")
+point_value = 5
+sell_value = 1
 effects = Array[ExtResource("1_r4tsq")]([])

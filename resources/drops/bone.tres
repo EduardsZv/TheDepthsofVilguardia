@@ -13,4 +13,6 @@ script = ExtResource("2_q40e1")
 name = "Bone"
 description = "I wonder to who this belongs?"
 texture = SubResource("AtlasTexture_lim1u")
+point_value = 75
+sell_value = 20
 effects = Array[ExtResource("1_wkmep")]([])

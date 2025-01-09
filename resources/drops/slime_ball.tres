@@ -13,4 +13,6 @@ script = ExtResource("1_p6s6b")
 name = "Slime Ball"
 description = "Squishy and gooey."
 texture = SubResource("AtlasTexture_703pv")
+point_value = 50
+sell_value = 10
 effects = Array[ExtResource("1_vk8sl")]([])

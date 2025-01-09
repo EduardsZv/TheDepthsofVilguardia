@@ -9,10 +9,12 @@ signal died
 
 var player: Player
 
+var coins: int = 0
+var points: int = 0
 
 func _ready() -> void:
 	# Clears inventory on startup
-	INVENTORY_DATA.clear_inventory()
+	#INVENTORY_DATA.clear_inventory()
 	pass
 
 func update_hp(hp: int) -> void:
@@ -43,3 +45,10 @@ func set_as_parent( _p: Node2D) -> void:
 # Removes player from a parent node
 func unparent_player(_p: Node2D) -> void:
 	_p.remove_child(player)
+
+func remove_player_instance() -> void:
+	player.queue_free()
+	player = null
+	INVENTORY_DATA.clear_inventory()
+	coins = 0
+	points = 0

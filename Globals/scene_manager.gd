@@ -3,13 +3,21 @@ extends Node
 signal scene_load_started
 signal scene_loaded
 
+
+enum SCENES {MARKET, MAIN_LEVEL, TUTORIAL}
+
+var prev_scene: int
+
 # If a new game has been started (if is on title or tutorial screen)
 var game_started: bool = false 
 
 
-func load_new_scene(level_path: String) -> bool:
+func load_new_scene(level_path: String, door_name: String = "") -> bool:
 	
 	
+	var prev_scene_name = get_tree().current_scene.name
+	
+		
 	get_tree().paused = true # Pauses the game
 	
 	await TransitionAnimation.fade_out() # Starts scene change animation
@@ -26,7 +34,6 @@ func load_new_scene(level_path: String) -> bool:
 	scene_loaded.emit() # Emits signal that the scene has been changed
 	
 	# Player position set
-	
 	if get_tree().current_scene.name == "Title Screen": # No player_pos set needed
 		game_started = false
 		await TransitionAnimation.fade_in() # Plays the scene change animation
@@ -35,7 +42,6 @@ func load_new_scene(level_path: String) -> bool:
 		game_started = false
 		await TransitionAnimation.fade_in()
 	
-	
 	# If player enters the village for the first time, sets player pos 
 	# to spawn. If player has come from the cave, sets it at the entrance
 	if get_tree().current_scene.name == "Vilguardia": 
@@ -43,15 +49,20 @@ func load_new_scene(level_path: String) -> bool:
 			game_started = true # The game has started
 			# Adds the player character to the game
 			PlayerManager.add_player_instance()
-			# Sets position
+			
+		if door_name == "market_door":
 			PlayerManager.set_player_pos( 
-			get_tree().current_scene.default_spawn_pos
-		)
-		else:
-			# Sets the position at the entrance door
-			PlayerManager.set_player_pos(
-			get_tree().current_scene.entrance_spawn_pos
-		)
+				get_tree().current_scene.market_door_spawn_pos
+			)
+		elif door_name == "cave_entrance":
+			PlayerManager.set_player_pos( 
+				get_tree().current_scene.entrance_spawn_pos
+			)
+		elif prev_scene_name == "Tutorial":
+			PlayerManager.set_player_pos( 
+				get_tree().current_scene.default_spawn_pos
+			)
+
 	
 	# Sets position at the entrance door
 	if get_tree().current_scene.name == "Main Level":

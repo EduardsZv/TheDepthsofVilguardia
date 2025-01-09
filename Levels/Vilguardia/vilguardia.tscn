@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0yvhfi1wuobh"]
+[gd_scene load_steps=12 format=3 uid="uid://c0yvhfi1wuobh"]
 
 [ext_resource type="PackedScene" uid="uid://dcojhvdrrold0" path="res://background/vilguardia_background.tscn" id="1_3g8so"]
 [ext_resource type="Texture2D" uid="uid://d2pyhmqxbbybe" path="res://assets/sprites/ground.png" id="1_aupvb"]
@@ -650,6 +650,9 @@ terrain_set_0/terrain_1/name = "Stone"
 terrain_set_0/terrain_1/color = Color(0.364706, 0.596078, 0.552941, 1)
 sources/1 = SubResource("TileSetAtlasSource_c5mro")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfler"]
+size = Vector2(32, 29)
+
 [node name="Vilguardia" type="Node2D"]
 script = ExtResource("1_j0e1q")
 
@@ -680,7 +683,19 @@ position = Vector2(-698, 7)
 [node name="SceneOpener1" parent="CaveDoor" instance=ExtResource("5_j32tg")]
 position = Vector2(0, -14)
 level = "res://Levels/CaveLevel/main_level.tscn"
-target_transition_area = "SceneOpener2"
+door_name = ""
 
 [node name="EntranceDoor" parent="." instance=ExtResource("3_v5go7")]
 position = Vector2(392, -58)
+
+[node name="MarketDoor" parent="." instance=ExtResource("3_v5go7")]
+position = Vector2(-404, 7)
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MarketDoor"]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_cfler")
+debug_color = Color(0, 0.64003, 0.35601, 0.42)
+
+[connection signal="area_entered" from="MarketDoor" to="." method="_on_market_door_area_entered"]
+[connection signal="area_exited" from="MarketDoor" to="." method="_on_market_door_area_exited"]

@@ -3,6 +3,9 @@ extends CanvasLayer
 signal shown
 signal hidden
 
+signal market_shown
+signal market_closed
+
 signal use_pressed
 signal delete_pressed
 
@@ -39,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if PlayerManager.player:
 		
 		# Toggles the inventory
-		if Input.is_action_just_pressed("toggle_inventory"):
+		if Input.is_action_just_pressed("toggle_inventory") && !Market.market_open:
 			if !inv_open:
 				open_inventory()
 			else:

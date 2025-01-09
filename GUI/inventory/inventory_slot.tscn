@@ -4,7 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="2_02kp2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg88o"]
-bg_color = Color(0.193655, 0.189347, 0.192641, 1)
+bg_color = Color(0.153723, 0.150079, 0.152865, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0cka7"]
 atlas = ExtResource("2_02kp2")
