@@ -3,37 +3,71 @@ extends Node
 signal scene_load_started
 signal scene_loaded
 
-var target_transition: String
-var position: Vector2
+# If a new game has been started (if is on title or tutorial screen)
+var game_started: bool = false 
 
-var prev_scene: String = ""
-var curr_scene: String = ""
 
-func load_new_scene(
-		level_path: String, 
-		_target_transition: String, 
-		_position: Vector2
-		) -> void:
+func load_new_scene(level_path: String) -> bool:
 	
 	
-	get_tree().paused = true
-	target_transition = _target_transition
-	position = _position
+	get_tree().paused = true # Pauses the game
 	
-	scene_load_started.emit()
+	await TransitionAnimation.fade_out() # Starts scene change animation
 	
-	await TransitionAnimation.fade_out()
+	scene_load_started.emit() # Emits signal that says that scene load has started
 	
-	get_tree().change_scene_to_file(level_path)
 	
-	get_tree().paused = false
+	get_tree().change_scene_to_file(level_path) # Changes the active scene
 	
-	await get_tree().process_frame
+	get_tree().paused = false # Unpauses the game
 	
-	scene_loaded.emit()
+	await get_tree().process_frame # Waits till the scene process has finishhed
 	
-	PlayerManager.set_player_pos(
-		get_tree().current_scene.entrance_spawn_pos
-	)
+	scene_loaded.emit() # Emits signal that the scene has been changed
+	
+	# Player position set
+	
+	if get_tree().current_scene.name == "Title Screen": # No player_pos set needed
+		game_started = false
+		await TransitionAnimation.fade_in() # Plays the scene change animation
+	
+	if get_tree().current_scene.name == "Tutorial": # No player_pos set needed
+		game_started = false
+		await TransitionAnimation.fade_in()
+	
+	
+	# If player enters the village for the first time, sets player pos 
+	# to spawn. If player has come from the cave, sets it at the entrance
+	if get_tree().current_scene.name == "Vilguardia": 
+		if !game_started:
+			game_started = true # The game has started
+			# Adds the player character to the game
+			PlayerManager.add_player_instance()
+			# Sets position
+			PlayerManager.set_player_pos( 
+			get_tree().current_scene.default_spawn_pos
+		)
+		else:
+			# Sets the position at the entrance door
+			PlayerManager.set_player_pos(
+			get_tree().current_scene.entrance_spawn_pos
+		)
+	
+	# Sets position at the entrance door
+	if get_tree().current_scene.name == "Main Level":
+		if !game_started:
+			game_started = true
+			PlayerManager.add_player_instance()
+			PlayerManager.set_player_pos(
+			get_tree().current_scene.default_spawn_pos
+		)
+		else:
+			PlayerManager.set_player_pos(
+			get_tree().current_scene.entrance_spawn_pos
+		)
+	
+	
+	
 	
 	await TransitionAnimation.fade_in()
+	return true

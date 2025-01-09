@@ -3,9 +3,7 @@ class_name SceneOpener extends Area2D
 
 
 @export_file("*.tscn") var level
-@export var target_transition_area: String = "SceneOpener"
 
-@export_category("Collision Area Settings")
 
 @export_range(1,12,1, "or_greater") var size: int = 2 :
 	set( value ): 
@@ -22,12 +20,19 @@ func _ready() -> void:
 		return
 	
 	body_entered.connect( _player_entered )
+	body_exited.connect( _player_exited)
+
 
 func _player_entered( _p: Node2D) -> void:
-	PlayerManager.interact_pressed.connect(change_scene)
+	if !PlayerManager.interact_pressed.is_connected(change_scene):
+		PlayerManager.interact_pressed.connect(change_scene)
+
+func _player_exited(_p: Node2D) -> void:
+	if PlayerManager.interact_pressed.is_connected(change_scene):
+		PlayerManager.interact_pressed.disconnect(change_scene)
 
 func change_scene() -> void:
-	SceneManager.load_new_scene(level, target_transition_area, Vector2.ZERO)
+	SceneManager.load_new_scene(level)
 	print("Scene Changed")
 
 

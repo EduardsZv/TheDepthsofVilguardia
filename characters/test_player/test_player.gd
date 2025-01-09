@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
+# Basic test player without gravity
 func _physics_process(delta: float) -> void:
 	var x_direction := Input.get_axis("left", "right")
 	var y_direction := Input.get_axis("up", "down")

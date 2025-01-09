@@ -6,15 +6,21 @@ extends ProgressBar
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var timer: Timer = $Timer
 
-var health_coefficient: float
+
+# The progress bar allows the max value to be only 100. The coefficient 
+# changes the allowed values to be different
+var health_coefficient: float 
 
 var max_health: set = _set_max_health
 var health: set = _set_health
 
+
 func _process(_delta: float) -> void:
+	# Sets the progress bar values
 	max_health_bar.value = max_health
 	health_bar.value = health * health_coefficient
 
+# First init healthbar
 func init_healthbar(new_max_health, new_health) -> void:
 	_set_max_health(new_max_health)
 	_set_health(new_health)

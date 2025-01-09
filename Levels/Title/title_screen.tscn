@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvq1sj7jdy43l"]
+[gd_scene load_steps=8 format=3 uid="uid://bvq1sj7jdy43l"]
 
-[ext_resource type="FontFile" uid="uid://dvrlxgiyv1iey" path="res://assets/fonts/title_font.png" id="1_e8153"]
-[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="2_pdgmh"]
+[ext_resource type="Script" path="res://Levels/Title/title_screen.gd" id="1_jlofw"]
+[ext_resource type="FontFile" uid="uid://dvrlxgiyv1iey" path="res://assets/fonts/title_font.png" id="2_a0jav"]
+[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="3_xfhle"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi2pf"]
 bg_color = Color(0.655076, 0.37778, 0, 1)
@@ -27,6 +28,7 @@ border_width_bottom = 2
 border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
 
 [node name="TitleScreen" type="CanvasLayer"]
+script = ExtResource("1_jlofw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1366, 768)
@@ -74,7 +76,7 @@ offset_bottom = 0.0880127
 theme_override_colors/font_shadow_color = Color(0.2484, 0.2484, 0.2484, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
-theme_override_fonts/font = ExtResource("1_e8153")
+theme_override_fonts/font = ExtResource("2_a0jav")
 theme_override_font_sizes/font_size = 55
 text = "THE DEPTHS 
     OF 
@@ -95,19 +97,22 @@ grow_vertical = 2
 theme_override_constants/separation = 14
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_pdgmh")
+theme_override_fonts/font = ExtResource("3_xfhle")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gi2pf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bwbps")
 text = "START GAME"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_pdgmh")
+theme_override_fonts/font = ExtResource("3_xfhle")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l245g")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yfb7t")
 text = "EXIT
 "
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

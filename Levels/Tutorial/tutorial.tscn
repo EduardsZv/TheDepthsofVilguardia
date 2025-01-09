@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://p23v7yyhcuk1"]
+[gd_scene load_steps=6 format=3 uid="uid://p23v7yyhcuk1"]
 
-[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="1_020ub"]
-[ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="2_1n0jm"]
+[ext_resource type="Script" path="res://Levels/Tutorial/tutorial.gd" id="1_7kub7"]
+[ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="2_0i26g"]
+[ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="3_wlgc1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0spu"]
 bg_color = Color(0.655076, 0.37778, 0, 1)
@@ -16,6 +17,7 @@ border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
 corner_detail = 1
 
 [node name="Tutorial" type="CanvasLayer"]
+script = ExtResource("1_7kub7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(1366, 768)
@@ -52,7 +54,7 @@ offset_top = -0.0400009
 offset_right = -0.600037
 offset_bottom = -0.179703
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_020ub")
+theme_override_fonts/font = ExtResource("2_0i26g")
 theme_override_font_sizes/font_size = 32
 text = "TUTORIAL"
 
@@ -74,7 +76,7 @@ theme_override_constants/line_spacing = 11
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 6
-theme_override_fonts/font = ExtResource("2_1n0jm")
+theme_override_fonts/font = ExtResource("3_wlgc1")
 theme_override_font_sizes/font_size = 18
 text = "Use WASD or arrow keys to move around and SPACE to jump.
 
@@ -97,10 +99,12 @@ offset_top = -0.0880127
 offset_right = -0.430054
 offset_bottom = -0.00805664
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_020ub")
+theme_override_fonts/font = ExtResource("2_0i26g")
 theme_override_styles/hover = SubResource("StyleBoxFlat_e0spu")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g88p6")
 text = "START GAME"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

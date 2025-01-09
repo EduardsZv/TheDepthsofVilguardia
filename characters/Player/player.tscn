@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://characters/Player/player.gd" id="1_qlscw"]
 [ext_resource type="Texture2D" uid="uid://djtigma4ik4yh" path="res://assets/sprites/test_character.png" id="1_xaqpm"]
-[ext_resource type="Script" path="res://scripts/camera.gd" id="2_1cqut"]
+[ext_resource type="Script" path="res://characters/Player/camera.gd" id="2_1cqut"]
 [ext_resource type="Texture2D" uid="uid://bvcu8gnpryolp" path="res://assets/sprites/player_hit_death.png" id="2_b1byy"]
 [ext_resource type="Texture2D" uid="uid://dhspr6h2g55xb" path="res://assets/sprites/player.png" id="2_b3u7o"]
 [ext_resource type="Script" path="res://characters/Player/attack_collision.gd" id="5_rxa50"]
@@ -445,10 +445,8 @@ speed_scale = 2.5
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_putgm")
-animation = &"attack"
+animation = &"run"
 autoplay = "idle"
-frame = 4
-frame_progress = 1.0
 flip_h = true
 
 [node name="InvincibilityFrames" type="AnimationPlayer" parent="."]

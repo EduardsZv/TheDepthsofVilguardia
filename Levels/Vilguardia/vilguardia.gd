@@ -6,7 +6,7 @@ extends Level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	default_spawn_pos = Vector2(140, -38)
+	default_spawn_pos = Vector2(28, -16)
 	entrance_spawn_pos = entrance_door.global_position
 	PlayerManager.set_player_pos(default_spawn_pos)
 

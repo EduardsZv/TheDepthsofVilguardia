@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Depths of Vilguardia"
-run/main_scene="res://Levels/vilguardia.tscn"
+run/main_scene="res://Levels/Title/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,10 +19,11 @@ config/icon="res://icon.svg"
 
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
 PlayerManager="*res://Globals/player_manager.tscn"
+Inventory="*res://GUI/inventory/inventory.tscn"
 SceneManager="*res://Globals/scene_manager.tscn"
 PauseMenu="*res://GUI/pause_menu/pause_menu.tscn"
-Inventory="*res://GUI/inventory/inventory.tscn"
 TransitionAnimation="*res://GUI/transition_animation/transition_animation.tscn"
+DeathScreen="*res://GUI/death_screen/death_screen.tscn"
 
 [display]
 
@@ -93,6 +94,16 @@ test={
 attack={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+plus={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":61,"key_label":0,"unicode":61,"location":0,"echo":false,"script":null)
+]
+}
+minus={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":45,"key_label":0,"unicode":45,"location":0,"echo":false,"script":null)
 ]
 }
 

@@ -50,6 +50,7 @@ corner_detail = 1
 
 [node name="Inventory" type="CanvasLayer"]
 process_mode = 3
+layer = 10
 script = ExtResource("1_2fv3a")
 
 [node name="Control" type="Control" parent="."]
@@ -119,14 +120,14 @@ text = "INVENTORY"
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.341
-anchor_top = 0.567
-anchor_right = 0.642
-anchor_bottom = 0.694
-offset_left = -148.147
-offset_top = -17.7529
-offset_right = -146.986
-offset_bottom = -17.9217
+anchor_left = 0.233
+anchor_top = 0.544
+anchor_right = 0.535
+anchor_bottom = 0.644
+offset_left = -0.511047
+offset_top = -0.117462
+offset_right = -0.345032
+offset_bottom = 0.206512
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.971519, 0.848288, 2.31028e-06, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -136,7 +137,6 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_q4pcn")
 theme_override_font_sizes/font_size = 18
-text = "A slimy ball."
 autowrap_mode = 2
 
 [node name="ColorRect3" type="ColorRect" parent="Control"]
@@ -155,7 +155,7 @@ offset_right = 768.0
 offset_bottom = 405.0
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/VBoxContainer2"]
+[node name="PlusButton" type="Button" parent="Control/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xcomc")
 theme_override_font_sizes/font_size = 28
@@ -165,51 +165,51 @@ text = "+"
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xcomc")
-text = "6"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="Control/VBoxContainer2"]
+[node name="MinusButton" type="Button" parent="Control/VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_xcomc")
 theme_override_font_sizes/font_size = 28
 text = "-"
 
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
+[node name="InvContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.361
-anchor_top = 0.351
-anchor_right = 0.621
-anchor_bottom = 0.549
-offset_left = -178.487
-offset_top = -15.1328
-offset_right = -177.907
-offset_bottom = -14.9512
+anchor_left = 0.23
+anchor_top = 0.331
+anchor_right = 0.491
+anchor_bottom = 0.53
+offset_left = 0.589996
+offset_top = 0.202393
+offset_right = -0.197021
+offset_bottom = -0.382751
 theme_override_styles/panel = SubResource("StyleBoxTexture_ciaqd")
 
-[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/InvContainer"]
 layout_mode = 2
 columns = 5
 script = ExtResource("3_vt8n4")
 data = ExtResource("4_flrt3")
 
-[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot2" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
-[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
-[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot3" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
-[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot4" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
-[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot5" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
-[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_8gax4")]
+[node name="InventorySlot6" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Control"]
@@ -237,3 +237,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_2eowy")
 text = "DELETE"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Control/VBoxContainer2/PlusButton" to="." method="_on_plus_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer2/MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/DelButton" to="." method="_on_del_button_pressed"]

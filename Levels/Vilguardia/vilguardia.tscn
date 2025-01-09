@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcojhvdrrold0" path="res://background/vilguardia_background.tscn" id="1_3g8so"]
 [ext_resource type="Texture2D" uid="uid://d2pyhmqxbbybe" path="res://assets/sprites/ground.png" id="1_aupvb"]
-[ext_resource type="Script" path="res://Levels/vilguardia.gd" id="1_j0e1q"]
+[ext_resource type="Script" path="res://Levels/Vilguardia/vilguardia.gd" id="1_j0e1q"]
 [ext_resource type="Texture2D" uid="uid://bgw40wa8ws08b" path="res://assets/sprites/test_sprites.png" id="3_pi6hl"]
 [ext_resource type="PackedScene" uid="uid://dtxd5gm7ix42t" path="res://scenes/door.tscn" id="3_v5go7"]
 [ext_resource type="PackedScene" uid="uid://d1btbckn11cn5" path="res://Levels/scene_opener.tscn" id="5_j32tg"]

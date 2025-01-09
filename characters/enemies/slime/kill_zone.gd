@@ -10,13 +10,14 @@ var damage: int = 0
 
 
 func _process(_delta: float) -> void:
+	# Checks if player is inside enemy's killzone, also saves Player node
 	if inside_killzone:
 		if saved_body.name == "Player":
-			saved_body.damage_player(damage)
+			saved_body.damage_player(damage) # Damages player
 
 
 
-
+# Designed to damage enemy many times, while invincibility isn't enabled
 func _on_area_entered(area: Area2D) -> void:
 	if area == null: # If function runs multiple times
 		inside_killzone = true
