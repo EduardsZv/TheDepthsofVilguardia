@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ib367qt6o5s7"]
+[gd_scene load_steps=12 format=3 uid="uid://ib367qt6o5s7"]
 
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory.gd" id="1_2fv3a"]
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_hsxto"]
 [ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="2_xcomc"]
-[ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="3_8gax4"]
 [ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="3_q4pcn"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_vt8n4"]
 [ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_flrt3"]
@@ -189,24 +188,6 @@ layout_mode = 2
 columns = 5
 script = ExtResource("3_vt8n4")
 data = ExtResource("4_flrt3")
-
-[node name="InventorySlot2" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
-
-[node name="InventorySlot" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="Control/InvContainer/GridContainer" instance=ExtResource("3_8gax4")]
-layout_mode = 2
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 0

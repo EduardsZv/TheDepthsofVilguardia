@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cls1swwtsym3b"]
+[gd_scene load_steps=16 format=3 uid="uid://cls1swwtsym3b"]
 
-[ext_resource type="Script" path="res://Levels/Market/market.gd" id="1_2s88l"]
+[ext_resource type="Script" path="res://Levels/Market/Inventory/scripts/market.gd" id="1_2s88l"]
 [ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="1_h73b4"]
 [ext_resource type="Texture2D" uid="uid://cqo8wunpfetpi" path="res://assets/sprites/inv_slot.png" id="2_3tol7"]
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_el2qe"]
 [ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_k6gsm"]
-[ext_resource type="PackedScene" uid="uid://d0w81rx6r0m4y" path="res://GUI/inventory/inventory_slot.tscn" id="5_uetw1"]
+[ext_resource type="Script" path="res://Levels/Market/Inventory/scripts/market_inventory_ui.gd" id="4_ujkwd"]
+[ext_resource type="Resource" uid="uid://be05vwqkpn5gx" path="res://Levels/Market/Inventory/market_inventory.tres" id="5_hw1hh"]
 [ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="6_jfowk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ept5i"]
@@ -112,43 +113,21 @@ text = "THE MARKET OF VILGUARDIA"
 [node name="MarketInv" type="PanelContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.371
-anchor_top = 0.302
-anchor_right = 0.632
-anchor_bottom = 0.417
-offset_left = -386.157
-offset_top = 3.366
-offset_right = -386.683
-offset_bottom = 67.161
+anchor_left = 0.089
+anchor_top = 0.306
+anchor_right = 0.349
+anchor_bottom = 0.416
+offset_left = -0.663033
+offset_top = 0.297974
+offset_right = -0.0830383
+offset_bottom = -0.0720215
 theme_override_styles/panel = SubResource("StyleBoxTexture_ept5i")
 
 [node name="GridContainer" type="GridContainer" parent="Control/MarketInv"]
 layout_mode = 2
 columns = 5
-
-[node name="InventorySlot2" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
-
-[node name="InventorySlot" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
-
-[node name="InventorySlot3" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
-
-[node name="InventorySlot4" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
-
-[node name="InventorySlot5" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
-
-[node name="InventorySlot6" parent="Control/MarketInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-script = null
+script = ExtResource("4_ujkwd")
+data = ExtResource("5_hw1hh")
 
 [node name="PlayerInv" type="PanelContainer" parent="Control"]
 layout_mode = 1
@@ -169,24 +148,6 @@ columns = 5
 script = ExtResource("3_el2qe")
 data = ExtResource("4_k6gsm")
 
-[node name="InventorySlot2" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
-[node name="InventorySlot" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
-[node name="InventorySlot3" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
-[node name="InventorySlot4" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
-[node name="InventorySlot5" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
-[node name="InventorySlot6" parent="Control/PlayerInv/GridContainer" instance=ExtResource("5_uetw1")]
-layout_mode = 2
-
 [node name="BuyContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -199,7 +160,7 @@ offset_top = 0.26593
 offset_right = -0.688019
 offset_bottom = 0.41095
 
-[node name="Button" type="Button" parent="Control/BuyContainer"]
+[node name="BuyButton" type="Button" parent="Control/BuyContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
@@ -298,7 +259,7 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("6_jfowk")
 theme_override_font_sizes/font_size = 18
-text = "Available money: 2465c"
+text = "Available money: 0c"
 autowrap_mode = 2
 
 [node name="SellableItemLabel" type="Label" parent="Control"]
@@ -346,7 +307,6 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("6_jfowk")
 theme_override_font_sizes/font_size = 18
-text = "Cost: 50c"
 autowrap_mode = 2
 
 [node name="ColorRect3" type="ColorRect" parent="Control"]
@@ -415,6 +375,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jmwq6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cd03x")
 text = "EXIT THE MARKET"
 
+[connection signal="pressed" from="Control/BuyContainer/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="Control/SellContainer/SellButton" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]

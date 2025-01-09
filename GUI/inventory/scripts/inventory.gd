@@ -9,6 +9,8 @@ signal market_closed
 signal use_pressed
 signal delete_pressed
 
+signal inv_created
+
 @onready var item_desc: Label = $Control/ItemDesc
 @onready var audio_stream_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
@@ -20,7 +22,7 @@ signal delete_pressed
 
 @onready var grid_container: InventoryUI = $Control/InvContainer/GridContainer
 
-var selected_slot: ItemData
+var selected_slot: SlotData
 
 var selected_item_count: int = 1
 
@@ -29,6 +31,7 @@ var inv_open: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
+	inv_created.emit()
 
 
 func _process(_delta: float) -> void:

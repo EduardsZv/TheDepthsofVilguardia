@@ -1,24 +1,19 @@
-class_name InventoryUI extends Control
+class_name MarketInvUI extends Control
 
-const INVENTORY_SLOT = preload("res://GUI/inventory/inventory_slot.tscn")
-
-var focus_index = 0
+const MARKET_INVENTORY_SLOT = preload("res://Levels/Market/Inventory/market_inventory_slot.tscn")
 
 @export var data: InventoryData
 
+var focus_index: int = 0
 
-
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Inventory.shown.connect(update_inventory) # On inventory open, updates inventory
-	Inventory.hidden.connect(clear_inventory) # On inventory close, clears it
+	
 	
 	Market.shown.connect(update_inventory) # On market open, updates inventory
 	Market.hidden.connect(clear_inventory) # On market close, clears it
 	
-	clear_inventory()
 	data.changed.connect(on_inventory_changed) # When inventory data is changed, calls function
-	Market.player_inv_changed.connect(on_inventory_changed)
 	
 	data.connect_slots()
 
@@ -29,20 +24,15 @@ func clear_inventory() -> void:
 
 # Adds all inventory slots
 func update_inventory() -> void:
-	for s in data.slots:
-		var new_slot = INVENTORY_SLOT.instantiate()
-		add_child(new_slot)
-		new_slot.slot_data = s
-		new_slot.focus_entered.connect(item_focused)
+	if data:
+		if data.slots:
+			for s in data.slots:
+				var new_slot = MARKET_INVENTORY_SLOT.instantiate()
+				add_child(new_slot)
+				new_slot.slot_data = s
+				new_slot.focus_entered.connect(item_focused)
 	
 	get_child(0).grab_focus() # Focuses on the first slot
-
-# When inventory is changed, updates it
-func on_inventory_changed() -> void:
-	clear_inventory()
-	update_inventory()
-	await get_tree().process_frame
-	get_child(focus_index).grab_focus()
 
 # Saves the focused slot in focus_index
 func item_focused() -> void:
@@ -50,6 +40,12 @@ func item_focused() -> void:
 		if get_child(i).has_focus():
 			focus_index = i
 			return
+
+func on_inventory_changed() -> void:
+	clear_inventory()
+	update_inventory()
+	await get_tree().process_frame
+	get_child(focus_index).grab_focus()
 
 # Every time an item is selected, updates the inventory to only select one item
 func update_selected_items(slot_item: SlotData) -> void:

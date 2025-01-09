@@ -6,14 +6,16 @@ class_name ItemData extends Resource
 
 @export var point_value: int
 
-@export var sell_value: int
-var buy_value: set = _set_buy_value
+@export var sell_value: int = 0:  set =  _set_sell_value
+var buy_value: int = 0
 
 @export_category("Item Use Effects")
 @export var effects: Array[ItemEffect]
 
-func _set_buy_value(value) -> void:
-	buy_value = sell_value * 1.5
+func _set_sell_value(value: int) -> void:
+	sell_value = value
+	buy_value = int(sell_value * 1.5)
+
 
 func use() -> bool:
 	if effects.size() == 0:

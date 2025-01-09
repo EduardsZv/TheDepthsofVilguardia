@@ -1,6 +1,5 @@
 class_name InventorySlotUI extends Button
 
-signal slot_select(item: ItemData)
 
 var slot_data: SlotData: set = set_slot_data
 var slot_selected: bool = false
@@ -71,11 +70,13 @@ func item_pressed() -> void:
 		if slot_data.item_data:
 			slot_selected = true
 			if Inventory.inv_open:
-				Inventory.selected_slot = slot_data.item_data # Sends the selected item info to Inventory
+				Inventory.selected_slot = slot_data # Sends the selected item info to Inventory
 				Inventory.focus_on_use_button() # Switches focus to USE button
 			if Market.market_open:
-				Market.selected_slot = slot_data.item_data
-				Market.update_sellable_item_value(slot_data.item_data.sell_value * slot_data.quantity)
+				Market.player_inv_selected_slot = slot_data
+				Market.update_sellable_item_value(slot_data.item_data.sell_value * Market.selected_item_count)
+				Market.market_inv_selected_slot = null
+				Market.buyable_item_label.text = ""
 
 # When item is used
 func item_used() -> void:
@@ -97,19 +98,17 @@ func item_sold() -> void:
 	
 	var sold_item_count: int = Market.selected_item_count
 	
-	
-
-	
-	if slot_selected:
-		if slot_data:
+	if slot_selected: # If the slot is selected
+		if slot_data: # If there is item in the slot
 			if slot_data.item_data:
 				
-				if slot_data.quantity - Market.selected_item_count > 0:
-					sold_item_count = slot_data.quantity - Market.selected_item_count
-				for i in range(0, sold_item_count+1):
+				if slot_data.quantity - Market.selected_item_count <= 0: # If player wants to sell more items than exist
+					sold_item_count = slot_data.quantity
+				for i in range(0, sold_item_count): # Sells all items and gives player money and points
 					slot_data.item_data.sell()
 					slot_data.quantity -= 1
 					label.text = str( slot_data.quantity)
+				Market.reset_selected_item_count()
 
 # When item is deleted
 func item_deleted() -> void:
