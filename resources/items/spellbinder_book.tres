@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://cvmjnm2l2xj0m"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_gcfql"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_2upky"]
+[ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="3_6hdvr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16xnk"]
+atlas = ExtResource("3_6hdvr")
+region = Rect2(176, 208, 16, 16)
+
+[resource]
+script = ExtResource("2_2upky")
+name = "Spellbinder's book"
+description = "It can teach evil spells to those who can learn."
+texture = SubResource("AtlasTexture_16xnk")
+point_value = 200
+sell_value = 75
+rarity = 35.0
+effects = Array[ExtResource("1_gcfql")]([])

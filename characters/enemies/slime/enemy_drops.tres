@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DropPool" load_steps=17 format=3 uid="uid://cgjnwdg5874bm"]
+
+[ext_resource type="Script" path="res://resources/drops/drop_data.gd" id="1_8ige2"]
+[ext_resource type="Resource" uid="uid://dauk51du2snol" path="res://resources/drops/slime_ball.tres" id="2_0i6jt"]
+[ext_resource type="Resource" uid="uid://q4p0iknqykq4" path="res://resources/drops/bone.tres" id="3_smeum"]
+[ext_resource type="Resource" uid="uid://d1mmwbqa0ycqq" path="res://resources/drops/cursed_amulet.tres" id="4_8y3um"]
+[ext_resource type="Resource" uid="uid://dexj6ud64pkrr" path="res://resources/drops/mysterious_liquid.tres" id="5_avjtb"]
+[ext_resource type="Resource" uid="uid://vxj7sfja8haa" path="res://resources/drops/ogre_tooth.tres" id="6_xosp7"]
+[ext_resource type="Resource" uid="uid://dovt1ftepvhlf" path="res://resources/drops/worm.tres" id="7_yg34b"]
+[ext_resource type="Resource" uid="uid://cl3ih6wqvntcv" path="res://resources/drops/bat_wing.tres" id="8_tgjra"]
+[ext_resource type="Script" path="res://resources/Item Drop Pool/drop_pool.gd" id="9_okhtj"]
+
+[sub_resource type="Resource" id="Resource_q57nl"]
+script = ExtResource("1_8ige2")
+item = ExtResource("8_tgjra")
+probability = 60.0
+min_amount = 1
+max_amount = 7
+
+[sub_resource type="Resource" id="Resource_8qppx"]
+script = ExtResource("1_8ige2")
+item = ExtResource("2_0i6jt")
+probability = 75.0
+min_amount = 1
+max_amount = 5
+
+[sub_resource type="Resource" id="Resource_v5g14"]
+script = ExtResource("1_8ige2")
+item = ExtResource("3_smeum")
+probability = 40.0
+min_amount = 1
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_vkw36"]
+script = ExtResource("1_8ige2")
+item = ExtResource("4_8y3um")
+probability = 5.0
+min_amount = 1
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_huhr6"]
+script = ExtResource("1_8ige2")
+item = ExtResource("5_avjtb")
+probability = 40.0
+min_amount = 1
+max_amount = 3
+
+[sub_resource type="Resource" id="Resource_elasa"]
+script = ExtResource("1_8ige2")
+item = ExtResource("6_xosp7")
+probability = 20.0
+min_amount = 1
+max_amount = 4
+
+[sub_resource type="Resource" id="Resource_j146v"]
+script = ExtResource("1_8ige2")
+item = ExtResource("7_yg34b")
+probability = 60.0
+min_amount = 1
+max_amount = 4
+
+[resource]
+script = ExtResource("9_okhtj")
+possible_drops = Array[ExtResource("1_8ige2")]([SubResource("Resource_q57nl"), SubResource("Resource_8qppx"), SubResource("Resource_v5g14"), SubResource("Resource_vkw36"), SubResource("Resource_huhr6"), SubResource("Resource_elasa"), SubResource("Resource_j146v")])

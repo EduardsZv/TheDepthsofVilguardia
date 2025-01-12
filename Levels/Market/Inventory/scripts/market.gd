@@ -24,7 +24,7 @@ signal player_inv_changed
 @onready var buyable_item_label: Label = $Control/BuyableItemLabel
 
 
-
+const MARKET_INVENTORY_DATA = preload("res://Levels/Market/Inventory/market_inventory.tres")
 
 var selected_item_count: int = 1
 var player_inv_selected_slot: SlotData
@@ -35,17 +35,18 @@ var market_open := false
 
 func _ready() -> void:
 	market_inv_created.emit()
+	MARKET_INVENTORY_DATA.set_market_items()
 	visible = false
-	
-	
 
-func _process(delta: float) -> void:
+
+
+func _process(_delta: float) -> void:
 	update_player_money_label()
 	update_sell_res_count()
 	player_inv_ui.update_selected_items(player_inv_selected_slot)
 	market_inv_ui.update_selected_items(market_inv_selected_slot)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("plus"):
 		_on_plus_button_pressed()
@@ -127,8 +128,10 @@ func update_sellable_item_value(value: int) -> void:
 
 
 func _on_sell_button_pressed() -> void:
-	sell_pressed.emit()
+	sell_pressed.emit(selected_item_count)
 
+func _on_sell_all_button_pressed() -> void:
+	sell_pressed.emit(null)
 
 func update_buyable_item_value(value: int) -> void:
 	buyable_item_label.text = "Cost:" + str(value) + "c"

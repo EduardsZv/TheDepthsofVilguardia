@@ -18,13 +18,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
-PlayerManager="*res://Globals/player_manager.tscn"
+PlayerManager="*res://0_Globals/Player Manager/player_manager.tscn"
 Inventory="*res://GUI/inventory/inventory.tscn"
-SceneManager="*res://Globals/scene_manager.tscn"
+SceneManager="*res://0_Globals/Scene Manager/scene_manager.tscn"
 PauseMenu="*res://GUI/pause_menu/pause_menu.tscn"
 TransitionAnimation="*res://GUI/transition_animation/transition_animation.tscn"
 DeathScreen="*res://GUI/death_screen/death_screen.tscn"
 Market="*res://Levels/Market/market.tscn"
+GameManager="*res://0_Globals/Game Manager/game_manager.tscn"
 
 [display]
 

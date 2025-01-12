@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cug8544s6b4lp"]
+[gd_scene load_steps=13 format=3 uid="uid://cug8544s6b4lp"]
 
 [ext_resource type="Script" path="res://Chest/chest.gd" id="1_ttsdb"]
+[ext_resource type="Resource" uid="uid://duq8rcnc2uix2" path="res://Chest/chest_items.tres" id="2_vg7pt"]
 [ext_resource type="Texture2D" uid="uid://bgw40wa8ws08b" path="res://assets/sprites/test_sprites.png" id="2_y60dt"]
 [ext_resource type="AudioStream" uid="uid://c6kfkckm3vvfm" path="res://assets/sounds/treasure-open.wav" id="3_nw04i"]
 [ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="4_e3wey"]
@@ -195,6 +196,7 @@ region = Rect2(0, 0, 16, 16)
 
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_ttsdb")
+item_pool = ExtResource("2_vg7pt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -9)

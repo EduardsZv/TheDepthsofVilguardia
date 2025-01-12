@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cls1swwtsym3b"]
+[gd_scene load_steps=18 format=3 uid="uid://cls1swwtsym3b"]
 
 [ext_resource type="Script" path="res://Levels/Market/Inventory/scripts/market.gd" id="1_2s88l"]
 [ext_resource type="FontFile" uid="uid://drvp2bgeyn50f" path="res://assets/fonts/default_font.png" id="1_h73b4"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://GUI/inventory/scripts/inventory_ui.gd" id="3_el2qe"]
 [ext_resource type="Resource" uid="uid://dgm3mj0mqqjqw" path="res://characters/Player/player_inv.tres" id="4_k6gsm"]
 [ext_resource type="Script" path="res://Levels/Market/Inventory/scripts/market_inventory_ui.gd" id="4_ujkwd"]
-[ext_resource type="Resource" uid="uid://be05vwqkpn5gx" path="res://Levels/Market/Inventory/market_inventory.tres" id="5_hw1hh"]
+[ext_resource type="Resource" uid="uid://r18ebc1j05wx" path="res://Levels/Market/Inventory/market_inventory.tres" id="5_hw1hh"]
 [ext_resource type="FontFile" uid="uid://df6bu6cgyxf6v" path="res://assets/fonts/small_font.png" id="6_jfowk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ept5i"]
@@ -44,6 +44,16 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.319252, 0.203559, 4.81308e-08, 1)
 corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pfoq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d3c4j"]
+bg_color = Color(0.690196, 0.0235294, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmwq6"]
 bg_color = Color(0.655076, 0.37778, 0, 1)
@@ -157,7 +167,7 @@ anchor_right = 0.253
 anchor_bottom = 0.667
 offset_left = -0.0300064
 offset_top = 0.26593
-offset_right = -0.688019
+offset_right = -0.850983
 offset_bottom = 0.41095
 
 [node name="BuyButton" type="Button" parent="Control/BuyContainer"]
@@ -168,25 +178,34 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8kpn6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_qg43e")
 text = "BUY"
 
-[node name="SellContainer" type="VBoxContainer" parent="Control"]
+[node name="SellContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.776
-anchor_top = 0.604
-anchor_right = 0.896
-anchor_bottom = 0.669
-offset_left = -0.791992
-offset_top = 0.731995
-offset_right = -0.712036
-offset_bottom = 0.876953
+anchor_left = 0.698
+anchor_top = 0.615
+anchor_right = 0.908
+anchor_bottom = 0.681
+offset_left = -0.166016
+offset_top = 0.294983
+offset_right = -0.236084
+offset_bottom = -0.327026
+theme_override_constants/separation = 7
 
 [node name="SellButton" type="Button" parent="Control/SellContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(130, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_h73b4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_o743x")
 theme_override_styles/normal = SubResource("StyleBoxFlat_av4qk")
 text = "SELL"
+
+[node name="SellAllButton" type="Button" parent="Control/SellContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_h73b4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3pfoq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d3c4j")
+text = "SELL ALL"
 
 [node name="PurchasableItemsTitle2" type="Label" parent="Control"]
 process_mode = 3
@@ -377,6 +396,7 @@ text = "EXIT THE MARKET"
 
 [connection signal="pressed" from="Control/BuyContainer/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="Control/SellContainer/SellButton" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="Control/SellContainer/SellAllButton" to="." method="_on_sell_all_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]
 [connection signal="pressed" from="Control/ExitContainer/ExitButton" to="." method="_on_exit_button_pressed"]

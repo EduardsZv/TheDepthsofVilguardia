@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dovt1ftepvhlf"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_86gxc"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_s05oe"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="3_34qsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2fn"]
+atlas = ExtResource("3_34qsl")
+region = Rect2(32, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_s05oe")
+name = "Worm"
+description = "Ewww, it's gross!"
+texture = SubResource("AtlasTexture_ds2fn")
+point_value = 1
+sell_value = 1
+rarity = 100.0
+effects = Array[ExtResource("1_86gxc")]([])

@@ -3,6 +3,7 @@ extends Node
 signal scene_load_started
 signal scene_loaded
 
+signal new_cycle_started
 
 enum SCENES {MARKET, MAIN_LEVEL, TUTORIAL}
 
@@ -50,15 +51,13 @@ func load_new_scene(level_path: String, door_name: String = "") -> bool:
 			# Adds the player character to the game
 			PlayerManager.add_player_instance()
 			
-		if door_name == "market_door":
-			PlayerManager.set_player_pos( 
-				get_tree().current_scene.market_door_spawn_pos
-			)
-		elif door_name == "cave_entrance":
+
+		if door_name == "cave_entrance": # Player finishes cave level
+			new_cycle_started.emit()
 			PlayerManager.set_player_pos( 
 				get_tree().current_scene.entrance_spawn_pos
 			)
-		elif prev_scene_name == "Tutorial":
+		elif prev_scene_name == "Tutorial": # Player starts the game
 			PlayerManager.set_player_pos( 
 				get_tree().current_scene.default_spawn_pos
 			)

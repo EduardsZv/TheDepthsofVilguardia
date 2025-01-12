@@ -15,4 +15,5 @@ description = "This looks valuable!"
 texture = SubResource("AtlasTexture_ia2l0")
 point_value = 175
 sell_value = 75
+rarity = 50.0
 effects = Array[ExtResource("1_vp61f")]([])

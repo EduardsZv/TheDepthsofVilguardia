@@ -15,4 +15,5 @@ description = "A valuable gem."
 texture = SubResource("AtlasTexture_16xnk")
 point_value = 150
 sell_value = 50
+rarity = 70.0
 effects = Array[ExtResource("1_m0avi")]([])

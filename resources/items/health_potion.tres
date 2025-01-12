@@ -24,4 +24,5 @@ Press ENTER to use."
 texture = SubResource("AtlasTexture_ml38h")
 point_value = 65
 sell_value = 30
+rarity = 60.0
 effects = Array[ExtResource("1_cj3rr")]([SubResource("Resource_d56ph")])

@@ -15,4 +15,5 @@ description = "I wonder to who this belongs?"
 texture = SubResource("AtlasTexture_lim1u")
 point_value = 75
 sell_value = 20
+rarity = 100.0
 effects = Array[ExtResource("1_wkmep")]([])

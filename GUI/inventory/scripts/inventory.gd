@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 	update_del_res_count()
 	
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	# Inventory works only if player character exists
 	if PlayerManager.player:
 		
@@ -93,9 +93,6 @@ func _on_minus_button_pressed() -> void:
 	if selected_item_count > 1:
 		selected_item_count -= 1
 
-# Focuses on the use button, used in inventory_slot_ui.gd
-func focus_on_use_button() -> void:
-	use_button.grab_focus()
 
 # Emits a signal to inv slot
 func _on_use_button_pressed() -> void:

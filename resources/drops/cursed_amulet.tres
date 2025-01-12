@@ -15,4 +15,5 @@ description = "It radiates evilness. Looks like it came from your mom!"
 texture = SubResource("AtlasTexture_h78xb")
 point_value = 250
 sell_value = 125
+rarity = 100.0
 effects = Array[ExtResource("1_sadbx")]([])

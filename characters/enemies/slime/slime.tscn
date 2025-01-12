@@ -1,18 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://b521cihh0wfjk"]
+[gd_scene load_steps=34 format=3 uid="uid://b521cihh0wfjk"]
 
 [ext_resource type="Texture2D" uid="uid://cp21wqv0umh7n" path="res://characters/enemies/slime/slime-Sheet.png" id="1_n0g8s"]
 [ext_resource type="Script" path="res://characters/enemies/slime/slime.gd" id="1_wj2jc"]
-[ext_resource type="Script" path="res://resources/drops/drop_data.gd" id="2_3llrv"]
+[ext_resource type="Resource" uid="uid://cgjnwdg5874bm" path="res://characters/enemies/slime/enemy_drops.tres" id="2_q7an7"]
 [ext_resource type="Script" path="res://characters/enemies/slime/kill_zone.gd" id="3_3jjvx"]
-[ext_resource type="Resource" uid="uid://dauk51du2snol" path="res://resources/drops/slime_ball.tres" id="3_32snn"]
 [ext_resource type="PackedScene" uid="uid://bke3avfmpg1ig" path="res://GUI/health_bar/enemy_health_bar.tscn" id="4_m5ep8"]
-
-[sub_resource type="Resource" id="Resource_b3odg"]
-script = ExtResource("2_3llrv")
-item = ExtResource("3_32snn")
-probability = 100.0
-min_amount = 10
-max_amount = 10
 
 [sub_resource type="Animation" id="Animation_vfynd"]
 length = 0.001
@@ -239,7 +231,7 @@ size = Vector2(21, 12)
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_wj2jc")
-drops = Array[ExtResource("2_3llrv")]([SubResource("Resource_b3odg")])
+drop_pool = ExtResource("2_q7an7")
 
 [node name="InvincibilityFrames" type="AnimationPlayer" parent="."]
 libraries = {

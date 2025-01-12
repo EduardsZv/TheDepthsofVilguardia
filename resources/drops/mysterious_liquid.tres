@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://dexj6ud64pkrr"]
+
+[ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_ht2u8"]
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_bcend"]
+[ext_resource type="Texture2D" uid="uid://d0tuif88wsnca" path="res://assets/sprites/enemy_drops.png" id="3_8lu11"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds2fn"]
+atlas = ExtResource("3_8lu11")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+script = ExtResource("2_bcend")
+name = "Mysterious liquid"
+description = "It reeks!"
+texture = SubResource("AtlasTexture_ds2fn")
+point_value = 100
+sell_value = 15
+rarity = 100.0
+effects = Array[ExtResource("1_ht2u8")]([])

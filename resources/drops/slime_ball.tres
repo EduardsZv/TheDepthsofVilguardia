@@ -15,4 +15,5 @@ description = "Squishy and gooey."
 texture = SubResource("AtlasTexture_703pv")
 point_value = 50
 sell_value = 10
+rarity = 100.0
 effects = Array[ExtResource("1_vk8sl")]([])

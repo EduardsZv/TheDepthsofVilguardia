@@ -22,7 +22,7 @@ func _ready() -> void:
 	if !Market.buy_pressed.is_connected(item_bought):
 		Market.buy_pressed.connect(item_bought)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_selected_color()
 
 # Sets slot data on init

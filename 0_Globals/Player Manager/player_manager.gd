@@ -20,6 +20,9 @@ func _ready() -> void:
 func update_hp(hp: int) -> void:
 	player.update_health(hp)
 
+func add_strength(strength: int) -> void:
+	player.damage += strength
+
 func get_hp() -> int:
 	return player.get_health()
 

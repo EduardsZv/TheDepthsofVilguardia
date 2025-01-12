@@ -37,12 +37,14 @@ func update_inventory() -> void:
 	
 	get_child(0).grab_focus() # Focuses on the first slot
 
+
 # When inventory is changed, updates it
 func on_inventory_changed() -> void:
+	var i = focus_index
 	clear_inventory()
 	update_inventory()
 	await get_tree().process_frame
-	get_child(focus_index).grab_focus()
+	get_child(i).grab_focus()
 
 # Saves the focused slot in focus_index
 func item_focused() -> void:

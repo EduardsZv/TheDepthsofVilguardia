@@ -33,7 +33,7 @@ func _ready() -> void:
 		Market.sell_pressed.connect(item_sold)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Updates selected slot highlight every frame
 	update_selected_color()
 
@@ -71,7 +71,6 @@ func item_pressed() -> void:
 			slot_selected = true
 			if Inventory.inv_open:
 				Inventory.selected_slot = slot_data # Sends the selected item info to Inventory
-				Inventory.focus_on_use_button() # Switches focus to USE button
 			if Market.market_open:
 				Market.player_inv_selected_slot = slot_data
 				Market.update_sellable_item_value(slot_data.item_data.sell_value * Market.selected_item_count)
@@ -91,23 +90,26 @@ func item_used() -> void:
 					return
 				slot_data.quantity -= 1
 				label.text = str( slot_data.quantity)
+				
 
-func item_sold() -> void:
+func item_sold(sold_item_count) -> void:
 	if !Market.market_open:
 		return
 	
-	var sold_item_count: int = Market.selected_item_count
 	
 	if slot_selected: # If the slot is selected
 		if slot_data: # If there is item in the slot
 			if slot_data.item_data:
 				
-				if slot_data.quantity - Market.selected_item_count <= 0: # If player wants to sell more items than exist
+				if sold_item_count == null:
+					sold_item_count = slot_data.quantity
+				elif slot_data.quantity - sold_item_count <= 0: # If player wants to sell more items than exist
 					sold_item_count = slot_data.quantity
 				for i in range(0, sold_item_count): # Sells all items and gives player money and points
 					slot_data.item_data.sell()
 					slot_data.quantity -= 1
 					label.text = str( slot_data.quantity)
+					
 				Market.reset_selected_item_count()
 
 # When item is deleted

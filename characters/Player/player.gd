@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("interact"): #Sends a signal if player presses 'Z'
 		PlayerManager.interact_pressed.emit()
 	if Input.is_action_just_pressed("test"):
@@ -142,6 +142,7 @@ func damage_player(value: int) -> void:
 # Death stuff
 func on_death() -> void:
 	is_dead = true
+	GameManager.on_death() # Resets difficulty
 	animated_sprite.play("death") # Death animation
 	hurt_box.queue_free() # Removes player's collision box
 	invincibility_frames.play("RESET") # Disables invincibility

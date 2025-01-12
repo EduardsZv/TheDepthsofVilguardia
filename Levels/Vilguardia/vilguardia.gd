@@ -19,9 +19,9 @@ func _process(_delta: float) -> void:
 	pass
 
 
-func _on_market_door_area_entered(area: Area2D) -> void:
+func _on_market_door_area_entered(_area: Area2D) -> void:
 	PlayerManager.interact_pressed.connect(Market.toggle_market_visibility)
 
 
-func _on_market_door_area_exited(area: Area2D) -> void:
+func _on_market_door_area_exited(_area: Area2D) -> void:
 	PlayerManager.interact_pressed.disconnect(Market.toggle_market_visibility)

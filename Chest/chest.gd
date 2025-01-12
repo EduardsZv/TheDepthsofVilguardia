@@ -1,9 +1,10 @@
-@tool # Allows the code to run in the editor
 class_name TreasureChest extends Node2D
 
 # Set items for the chest to unbox
-@export var item_data: ItemData : set = _set_item_data
-@export var quantity: int = 1 : set = _set_quantity
+@export var item_pool: ItemPool
+var quantity: int = 0
+
+var item_in_chest: SlotData
 
 var is_open: bool = false
 
@@ -15,13 +16,13 @@ var is_open: bool = false
 
 
 func _ready() -> void:
+	set_item()
 	# Updates the item's textures
 	_update_label()
 	_update_texture()
 	
-	#
-	if Engine.is_editor_hint(): # If is open in editor
-		return
+	
+	
 	
 	# Signals to check if player has clicked "Z" in chest area
 	interact_area.area_entered.connect( _on_area_entered)
@@ -31,11 +32,18 @@ func _ready() -> void:
 func player_interact() -> void:
 	if is_open == true:
 		return
+	if PlayerManager.INVENTORY_DATA.is_inventory_full():
+		return
 	is_open = true
 	animation_player.play("open_chest")
-	if item_data and quantity > 0:
-		PlayerManager.INVENTORY_DATA.add_item(item_data, quantity) # Adds items to inventory
+	if item_in_chest.item_data and quantity > 0:
+		PlayerManager.INVENTORY_DATA.add_item(item_in_chest.item_data, quantity) # Adds items to inventory
 	
+
+func set_item() -> void:
+	if item_pool:
+		item_in_chest = item_pool.set_dropped_item()
+		quantity = item_in_chest.quantity
 
 # Checks player interaction
 func _on_area_entered(_a: Area2D) -> void:
@@ -44,12 +52,8 @@ func _on_area_entered(_a: Area2D) -> void:
 func _on_area_exited(_a: Area2D) -> void:
 	PlayerManager.interact_pressed.disconnect(player_interact)
 
-# Sets item data to chest
-func _set_item_data(value: ItemData) -> void:
-	item_data = value
 
-func _set_quantity(value: int) -> void:
-	quantity = value
+
 	
 # Updates the item quantity label
 func _update_label() -> void:
@@ -61,5 +65,6 @@ func _update_label() -> void:
 
 # Updates texture
 func _update_texture() -> void:
-	if item_data and item:
-		item.texture = item_data.texture
+	if item_in_chest:
+		if item_in_chest.item_data:
+			item.texture = item_in_chest.item_data.texture

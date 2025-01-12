@@ -15,4 +15,5 @@ description = "The rulers of these caves have left this here.."
 texture = SubResource("AtlasTexture_n130v")
 point_value = 700
 sell_value = 400
+rarity = 9.0
 effects = Array[ExtResource("1_7s2wq")]([])

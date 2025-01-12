@@ -7,7 +7,7 @@ func _ready() -> void:
 	hide_death_screen()
 	PlayerManager.died.connect(show_death_screen)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_points()
 
 

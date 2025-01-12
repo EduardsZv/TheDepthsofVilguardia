@@ -33,6 +33,13 @@ func add_item(item: ItemData, count: int = 1) -> bool:
 			return true
 	return false
 
+func is_inventory_full() -> bool:
+	for i in slots.size():
+		if slots[i] == null:
+			return false
+	return true
+		
+
 func delete_item(item: ItemData, count: int) -> bool:
 	
 	for s in slots:
@@ -48,7 +55,8 @@ func delete_item(item: ItemData, count: int) -> bool:
 func connect_slots() -> void:
 	for s in slots:
 		if s:
-			s.changed.connect( slot_changed )
+			if !s.changed.is_connected( slot_changed ):
+				s.changed.connect( slot_changed )
 
 
 # If some slot has an item with a quantity of 0 or less, it gets deleted

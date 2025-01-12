@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemPool" load_steps=10 format=3 uid="uid://duq8rcnc2uix2"]
+
+[ext_resource type="Script" path="res://resources/items/item_data.gd" id="1_xb225"]
+[ext_resource type="Script" path="res://resources/Item Drop Pool/chest_item_pool.gd" id="2_6uqh2"]
+[ext_resource type="Resource" uid="uid://dka17k4cp7luy" path="res://resources/items/strength_potion.tres" id="2_at1to"]
+[ext_resource type="Resource" uid="uid://csk35fyh814q4" path="res://resources/items/stone.tres" id="3_i0wlm"]
+[ext_resource type="Resource" uid="uid://cvmjnm2l2xj0m" path="res://resources/items/spellbinder_book.tres" id="4_t8prg"]
+[ext_resource type="Resource" uid="uid://l2vnsva1fu7q" path="res://resources/items/ruby.tres" id="5_yq03a"]
+[ext_resource type="Resource" uid="uid://dx42jm8bilp37" path="res://resources/items/mighty_crown.tres" id="6_j3r5j"]
+[ext_resource type="Resource" uid="uid://djoeea0w3crxt" path="res://resources/items/health_potion.tres" id="7_k18k1"]
+[ext_resource type="Resource" uid="uid://cwxklcgs11jxe" path="res://resources/items/gem.tres" id="8_23s5s"]
+
+[resource]
+script = ExtResource("2_6uqh2")
+possible_items = Array[ExtResource("1_xb225")]([ExtResource("2_at1to"), ExtResource("3_i0wlm"), ExtResource("4_t8prg"), ExtResource("5_yq03a"), ExtResource("6_j3r5j"), ExtResource("7_k18k1"), ExtResource("8_23s5s")])

@@ -2,7 +2,7 @@ class_name MarketInvUI extends Control
 
 const MARKET_INVENTORY_SLOT = preload("res://Levels/Market/Inventory/market_inventory_slot.tscn")
 
-@export var data: InventoryData
+@export var data: MarketInventoryData
 
 var focus_index: int = 0
 

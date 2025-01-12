@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed: int
+var speed: float
 var direction: int = 1
 var damage: int = 10
 
@@ -15,7 +15,7 @@ var inv_frames_active: = false
 const PICKUP = preload("res://items/item_pickup/item_pickup.tscn")
 
 # Assigned enemy drops
-@export var drops: Array[DropData]
+@export var drop_pool: DropPool
 
 # Collision checkers for idle roaming
 @onready var ray_left: RayCast2D = $RayLeft
@@ -39,12 +39,14 @@ const PICKUP = preload("res://items/item_pickup/item_pickup.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	speed = 40 + randi() % 61     # Random speed 40-60 
+	speed = (40 + randi() % 61) * (GameManager.difficulty * 1.11)     # Random speed 40-60, changed by game's difficulty
+	damage = int(damage * (GameManager.difficulty * 1.11))
 	health_bar.init_healthbar(health, health) # Creates enemy's healthbar
 	kill_zone.attacking.connect(on_attack) # When killzone detects player
 	kill_zone.damage = damage # Sets killzone's damage
 	
 
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -91,11 +93,6 @@ func _on_animated_sprite_animation_finished() -> void:
 		if get_node_or_null("KillZone"):
 			if kill_zone.inside_killzone:
 				kill_zone._on_area_entered(null)
-	
-	# On death, makes enemy invisible and removes health bar
-	if animated_sprite.get_animation() == "die":
-		animated_sprite.visible = false
-		health_bar.queue_free()
 		
 	# After hit animation, resumes idle state and ends invincibility
 	if animated_sprite.get_animation() == "hit":	
@@ -105,7 +102,7 @@ func _on_animated_sprite_animation_finished() -> void:
 
 # When enemy is damaged
 func on_damage(_damage: int) -> void:
-	update_hp( health-damage )
+	update_hp( health- _damage )
 	if health <= 0: # If enemy doesnt have health points, death
 		on_death()
 		return
@@ -121,10 +118,16 @@ func on_death():
 	kill_zone.queue_free()
 	hurt_box.queue_free()
 	animated_sprite.play("die")
+	
+	await animated_sprite.animation_finished
+	
+	animated_sprite.visible = false
+	health_bar.queue_free()
+	
 
 # If enemy's hurtbox collides with player's attack zone
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	on_damage(area.damage)
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	on_damage(PlayerManager.player.damage)
 
 # Resets the invincibility frames
 func _on_invincibility_frames_animation_finished(anim_name: StringName) -> void:
@@ -143,6 +146,10 @@ func update_hp(new_health: int):
 
 # Drops the items that has been set to the enemy
 func drop_items() -> void:
+	if !drop_pool:
+		return
+	drop_pool.set_drops()
+	var drops: Array[DropData] = drop_pool.drops
 	if drops.size() == 0: # If no items have been set
 		return
 	

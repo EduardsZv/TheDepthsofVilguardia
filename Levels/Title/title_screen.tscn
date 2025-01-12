@@ -67,12 +67,14 @@ color = Color(0.714892, 0.380265, 0.254405, 1)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.384
-offset_left = 429.0
-offset_top = 124.0
-offset_right = -387.0
-offset_bottom = 0.0880127
+anchor_left = 0.515
+anchor_top = 0.161
+anchor_right = 0.515
+anchor_bottom = 0.161
+offset_left = -274.49
+offset_top = 0.35199
+offset_right = 275.51
+offset_bottom = 171.352
 theme_override_colors/font_shadow_color = Color(0.2484, 0.2484, 0.2484, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5

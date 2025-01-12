@@ -7,6 +7,8 @@ class_name ItemData extends Resource
 @export var point_value: int
 
 @export var sell_value: int = 0:  set =  _set_sell_value
+
+@export_range(1, 100, 1) var rarity: float = 100
 var buy_value: int = 0
 
 @export_category("Item Use Effects")
