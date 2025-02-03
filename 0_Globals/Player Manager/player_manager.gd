@@ -13,8 +13,8 @@ var coins: int = 0
 var points: int = 0
 
 func _ready() -> void:
-	# Clears inventory on startup
-	#INVENTORY_DATA.clear_inventory()
+	 #Clears inventory on startup
+	INVENTORY_DATA.clear_inventory()
 	pass
 
 func update_hp(hp: int) -> void:
@@ -49,6 +49,7 @@ func set_as_parent( _p: Node2D) -> void:
 func unparent_player(_p: Node2D) -> void:
 	_p.remove_child(player)
 
+# Removes player from scene
 func remove_player_instance() -> void:
 	player.queue_free()
 	player = null

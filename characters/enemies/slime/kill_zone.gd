@@ -6,7 +6,6 @@ var inside_killzone := false
 var saved_body: Node2D
 var damage: int = 0
 
-@onready var slime: Node2D = $".."
 
 
 func _process(_delta: float) -> void:

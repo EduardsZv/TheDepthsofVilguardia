@@ -5,24 +5,28 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 var health: int = 80
 var max_health: int = 90
-var invincibility_length: int = 60
 
 var damage: int = 15
 
 var on_ladder: bool = false
 var climbing := false
 var is_dead := false 
-var attacking := false
+var attacking := false ## Used for restricting other animations while attacking
 var facing_right: = true
-var stunned := false
-var restricted_movement := false
+var stunned := false ## Used for when character is damaged
+var restricted_movement := false ## Used for when inventory or pause screen is opened
+var is_invincible := false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var invincibility_frames: AnimationPlayer = $InvincibilityFrames
-@onready var attack_player: AnimationPlayer = $AttackPlayer
+@onready var invincibility_frames: AnimationPlayer = $Invincibility/InvincibilityFrames
+@onready var attack_player: AnimationPlayer = $Attacking/AttackPlayer
 @onready var hurt_box: Area2D = $HurtBox
-@onready var attack_length: Timer = $AttackLength
+@onready var attack_length: Timer = $Attacking/AttackLength
+@onready var invincibility_length: Timer = $Invincibility/InvincibilityLength
+@onready var ladder_checker: Area2D = $LadderChecker
+
+
 
 
 
@@ -30,6 +34,11 @@ var restricted_movement := false
 func _ready() -> void:
 	restricted_movement = false
 	PlayerHud.init_hp(max_health, health) # Initializes player health bar
+	
+	ladder_checker.body_entered.connect(func(body): on_ladder = true)
+	ladder_checker.body_exited.connect(func(body): on_ladder = false)
+
+
 
 func _physics_process(delta: float) -> void:
 	PlayerHud.update_hp(health) # Updates healthbar with player health
@@ -57,8 +66,6 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_pressed("interact"): #Sends a signal if player presses 'Z'
 		PlayerManager.interact_pressed.emit()
-	if Input.is_action_just_pressed("test"):
-		damage_player(800)
 	
 	if Input.is_action_just_pressed("attack"): #If attack key is pressed
 		on_attack()
@@ -123,21 +130,20 @@ func ladder_function(y_direction) -> void:
 			velocity.y = 0
 
 
-# Checks when player collides with ladders
-func _on_ladder_checker_body_entered(_body: Node2D) -> void:
-	on_ladder = true
 
-func _on_ladder_checker_body_exited(_body: Node2D) -> void:
-	on_ladder = false
 
 
 # Function to damage the player
 func damage_player(value: int) -> void:
-		if !attacking && !stunned:
-			stunned = true
-			animated_sprite.play("hit")
-			invincibility_frames.play("invincible") # Invincibility frames
-			update_health(-value)
+	if !attacking && !stunned:
+		stunned = true
+		animated_sprite.play("hit")
+		activate_invincibility() # Invincibility frames
+		update_health(-value)
+		
+		await animated_sprite.animation_finished
+		
+		stunned = false
 
 # Death stuff
 func on_death() -> void:
@@ -162,11 +168,14 @@ func on_attack() -> void:
 	else:
 		attack_player.play("attack_left")
 	
-	attack_length.start() # Timer that says how long the player is in the attacking state
-
-# Disables attacking state on timer timeout
-func _on_attack_length_timeout() -> void:
+	
+	attack_length.start()
+	
+	await attack_length.timeout
+	
 	attacking = false
+
+
 
 
 # Checks which animations have ended
@@ -176,15 +185,9 @@ func _on_animated_sprite_animation_finished() -> void:
 		stunned = false
 		animated_sprite.play("idle")
 	
-	# Disables stun when hit has ended
-	if animated_sprite.get_animation() == "hit":
-		stunned = false
 
 
-# Disables invincibility after a while
-func _on_invincibility_frames_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "invincible":
-		invincibility_frames.play("RESET")
+
 
 # A function to properly update hp
 func update_health(hp : int) -> void:
@@ -206,3 +209,13 @@ func get_health() -> int:
 
 func get_max_health() -> int:
 	return max_health
+
+func activate_invincibility() -> void:
+	is_invincible = true
+	invincibility_frames.play("invincible")
+	invincibility_length.start()
+	
+	await invincibility_length.timeout
+	
+	is_invincible = false
+	invincibility_frames.play("RESET")

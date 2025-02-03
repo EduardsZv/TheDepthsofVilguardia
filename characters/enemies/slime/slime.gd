@@ -74,7 +74,7 @@ func idle_roaming(delta: float) -> void:
 			position.x += speed * delta
 		elif direction == -1:
 			position.x -= speed * delta
-		
+
 
 # Plays animation on attack and stuns the enemy
 func on_attack() -> void:
@@ -92,7 +92,7 @@ func _on_animated_sprite_animation_finished() -> void:
 		# If the player in the killzone after attack is finished, resumes another attack
 		if get_node_or_null("KillZone"):
 			if kill_zone.inside_killzone:
-				kill_zone._on_area_entered(null)
+				kill_zone._on_body_entered(null)
 		
 	# After hit animation, resumes idle state and ends invincibility
 	if animated_sprite.get_animation() == "hit":	

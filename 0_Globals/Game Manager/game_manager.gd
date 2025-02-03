@@ -1,6 +1,6 @@
 extends Node
 
-var difficulty: int = 1
+var difficulty: int = 1 # Coefficient that scales enemy health, damage, speed
 
 func _ready() -> void:
 	print(difficulty)

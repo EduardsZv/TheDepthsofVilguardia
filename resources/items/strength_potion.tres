@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://dka17k4cp7luy"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=7 format=3 uid="uid://dka17k4cp7luy"]
 
 [ext_resource type="Script" path="res://items/item_effects/item_effect.gd" id="1_v3u3e"]
 [ext_resource type="Script" path="res://resources/items/item_data.gd" id="2_88mmq"]
 [ext_resource type="Script" path="res://items/item_effects/item_effect_strength.gd" id="2_siv2r"]
-[ext_resource type="AudioStream" uid="uid://d0fwcgr3nyg8j" path="res://assets/sounds/life_pickup.wav" id="3_41qtf"]
-[ext_resource type="Texture2D" uid="uid://j8rttu1em2u2" path="res://assets/sprites/chest_items.png" id="3_asg5a"]
+
+[sub_resource type="Resource" id="Resource_rexng"]
+metadata/__load_path__ = "res://assets/sounds/life_pickup.wav"
 
 [sub_resource type="Resource" id="Resource_fcdwi"]
 script = ExtResource("2_siv2r")
 strength_amount = 10
-sound = ExtResource("3_41qtf")
+sound = SubResource("Resource_rexng")
 filler = ""
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16xnk"]
-atlas = ExtResource("3_asg5a")
 region = Rect2(144, 64, 16, 16)
 
 [resource]

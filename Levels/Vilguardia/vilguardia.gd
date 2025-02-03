@@ -1,4 +1,4 @@
-extends Level
+class_name Vilguardia extends Level
 
 
 @onready var entrance_door: Area2D = $EntranceDoor
